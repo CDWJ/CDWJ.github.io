@@ -19,7 +19,7 @@ redirect_from:
 I'm currently a Master student at Columbia University studying Computer Science. Currently, I'm luckily working with Prof. [Changxi Zheng](http://www.cs.columbia.edu/~cxz/) and Ziwei Zhu. Before this, I was an undergrad at Paul G. Allen School at University of Washington majoring in CS. At that time, I was fortunate to work with Prof. [Adriana Schulz](https://homes.cs.washington.edu/~adriana/) and Ben Jones at GRAIL.
 
 I'm generally interested in computer graphics, including physicallly-based simulation, and CAD modeling. I'm also interested in rendering and other topics and willing to learn more about these. I also want to explore more on combining data-driven method with computer graphics. 
-Here is my [CV](./files/cv.pdf)
+Here is my [CV](./files/cv.pdf).
 ## Research
 <p>
   <div id='pubContainer'>
