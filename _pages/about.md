@@ -52,6 +52,17 @@ Here is my [CV](./files/cv.pdf).
   <div id='pubContainer'>
     <div id='paper'>
       <div>
+        <img id="paperimg" src="../images/project_3.png" alt="project_3"/>
+      </div>
+      <div id='paperinfo'>
+        <b>Survey on neural implicit method for reconstruction tasks (2021 Autumn)</b><br />
+        <i>Columbia University With Honglin Chen</i><br />
+        <a nonsmooth="1" href="./files/NNDL_Project_Final_Report.pdf" class="">Paper</a>
+        <a nonsmooth="1" href="https://github.com/honglin-c/neural-implicit" class="">Github</a>
+      </div>
+    </div>
+    <div id='paper'>
+      <div>
         <img id="paperimg" src="../images/animation.png" alt="animation"/>
       </div>
       <div id='paperinfo'>
