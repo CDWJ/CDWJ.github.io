@@ -42,6 +42,7 @@ Here is my [CV](./files/cv.pdf).
         <i>Siggraph Asia</i><br />
         Benjamin Jones, Dalton Hildreth, <b>Duowen Chen</b>, Ilya Baran, Vova Kim, Adriana Schulz<br />
         <a nonsmooth="1" href="https://arxiv.org/pdf/2105.12238.pdf" class="">Paper</a>
+        <a nonsmooth="1" href="https://grail.cs.washington.edu/projects/automate/" class="">Project Page</a>
       </div>
     </div>
   </div>
