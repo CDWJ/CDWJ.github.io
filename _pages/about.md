@@ -53,7 +53,7 @@ Here is my [CV](./files/cv.pdf).
   <div id='pubContainer'>
     <div id='paper'>
       <div>
-        <img id="paperimg" src="../images/snow.png" alt="snow"/>
+        <img id="paperimg" src="../images/snow_project.png" alt="snow_project"/>
       </div>
       <div id='paperinfo'>
         <b>DesnowNet survey and CycleSnowGAN</b><br />
