@@ -53,6 +53,17 @@ Here is my [CV](./files/cv.pdf).
   <div id='pubContainer'>
     <div id='paper'>
       <div>
+        <img id="paperimg" src="../images/snow.png" alt="snow"/>
+      </div>
+      <div id='paperinfo'>
+        <b>DesnowNet survey and CycleSnowGAN</b><br />
+        <i>Personal Project</i><br />
+        <a nonsmooth="1" href="./files/CycleSNOW.pdf" class="">Paper</a>
+        <a nonsmooth="1" href="https://drive.google.com/file/d/1RThID3qo9kXwZ0XjRHKJ240YMcTGfBIc/view?usp=sharing" class="">Code</a>
+      </div>
+    </div>
+    <div id='paper'>
+      <div>
         <img id="paperimg" src="../images/project_3.png" alt="project_3"/>
       </div>
       <div id='paperinfo'>
