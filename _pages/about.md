@@ -27,7 +27,7 @@ Here is my [CV](./files/duowenchen_cv-8-13.pdf).
       </div>
       <div id='paperinfo'>
         <b>Solid-Fluid Interaction on Particle Flow Maps</b><br />
-        <i>Siggraph Asia 2024 (TOG)</i><br />
+        <i>ACM Transactions on Graphics (SIGGRAPH ASIA 2024)</i><br />
         <b>Duowen Chen</b>, Zhiqi Li, Junwei Zhou, Fan Feng, Tao Du, Bo Zhu<br />
         <a nonsmooth="1" href="../projects/pfm-sfi-project-page/static/pdfs/SASIA_2024__Solid_Fluid_Interaction_on_Particle_Flow_Maps.pdf" class="">Paper</a>
         <a nonsmooth="1" href="../projects/pfm-sfi-project-page/index.html" class="">Project Page</a>
@@ -39,7 +39,7 @@ Here is my [CV](./files/duowenchen_cv-8-13.pdf).
       </div>
       <div id='paperinfo'>
         <b>Particle Laden Fluid on Flow Maps</b><br />
-        <i>Siggraph Asia 2024 (TOG)</i><br />
+        <i>ACM Transactions on Graphics (SIGGRAPH ASIA 2024)</i><br />
         Zhiqi Li, <b>Duowen Chen</b>, Candong Lin, Jinyuan Liu, Bo Zhu<br />
         <!-- <a nonsmooth="1" href="../projects/pfm-sfi-project-page/static/pdfs/SASIA_2024__Solid_Fluid_Interaction_on_Particle_Flow_Maps.pdf" class="">Paper</a> -->
         <!-- <a nonsmooth="1" href="../projects/pfm-sfi-project-page/index.html" class="">Project Page</a> -->
@@ -52,7 +52,7 @@ Here is my [CV](./files/duowenchen_cv-8-13.pdf).
       </div>
       <div id='paperinfo'>
         <b>An Eulerian Vortex Method on Flow Maps</b><br />
-        <i>Siggraph Asia 2024 (TOG)</i><br />
+        <i>ACM Transactions on Graphics (SIGGRAPH ASIA 2024)</i><br />
         Sinan Wnag, Yitong Deng, Molin Deng, Hong-Xing Yu, Junwei Zhou, <b>Duowen Chen</b>, Taku Komura, Jiajun Wu, Bo Zhu<br />
         <!-- <a nonsmooth="1" href="../projects/pfm-sfi-project-page/static/pdfs/SASIA_2024__Solid_Fluid_Interaction_on_Particle_Flow_Maps.pdf" class="">Paper</a> -->
         <!-- <a nonsmooth="1" href="../projects/pfm-sfi-project-page/index.html" class="">Project Page</a> -->
@@ -65,7 +65,7 @@ Here is my [CV](./files/duowenchen_cv-8-13.pdf).
       </div>
       <div id='paperinfo'>
         <b>Lagrangian Covector Fluid with Free Surface</b><br />
-        <i>Siggraph 2024 (Conference Track)</i><br />
+        <i>ACM SIGGRAPH 2024 (Conference Track)</i><br />
         Zhiqi Li, Barnabás Börcsök, <b>Duowen Chen</b>, Yutong Sun, Bo Zhu, Greg Turk<br />
         <a nonsmooth="1" href="https://arxiv.org/pdf/2405.09801" class="">Paper</a>
         <a nonsmooth="1" href="https://zhiqili-cg.github.io/CovectorFluidFreeSurface/" class="">Project Page</a>
@@ -78,7 +78,7 @@ Here is my [CV](./files/duowenchen_cv-8-13.pdf).
       </div>
       <div id='paperinfo'>
         <b>Eulerian-Lagrangian Fluid Simulation on Particle Flow Maps</b><br />
-        <i>Siggraph 2024 (TOG)</i><br />
+        <i>ACM Transactions on Graphics (SIGGRAPH 2024)</i><br />
         Junwei Zhou, <b>Duowen Chen</b>, Molin Deng, Yitong Deng, Yuchen Sun, Sinan Wang, Shiying Xiong, Bo Zhu<br />
         <a nonsmooth="1" href="https://www.arxiv.org/pdf/2405.09672" class="">Paper</a>
         <a nonsmooth="1" href="https://zjw49246.github.io/projects/pfm/" class="">Project Page</a>
@@ -91,7 +91,7 @@ Here is my [CV](./files/duowenchen_cv-8-13.pdf).
       </div>
       <div id='paperinfo'>
         <b>BREP Dataset and GCN for Automatic Mating of CAD Assemblies</b><br />
-        <i>Siggraph Asia 2021 (TOG)</i><br />
+        <i>ACM Transactions on Graphics (SIGGRAPH ASIA 2021)</i><br />
         Benjamin Jones, Dalton Hildreth, <b>Duowen Chen</b>, Ilya Baran, Vova Kim, Adriana Schulz<br />
         <a nonsmooth="1" href="https://arxiv.org/pdf/2105.12238.pdf" class="">Paper</a>
         <a nonsmooth="1" href="https://grail.cs.washington.edu/projects/automate/" class="">Project Page</a>
