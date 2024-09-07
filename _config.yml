@@ -82,8 +82,8 @@ analytics:
 author:
   name             : "Duowen(Justin) Chen"
   avatar           : "profile.jpeg"
-  bio              : "MSCS Student at Columbia University"
-  location         : "New York, NY"
+  bio              : "PhD Student at Georgia Tech"
+  location         : "Atlanta, GA"
   employer         :
   # pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   # googlescholar    : "http://yourfullgooglescholarurl.com"
@@ -96,7 +96,7 @@ author:
   flickr           : "photos/164978051@N05/with/33950810968/"
   facebook         :
   foursquare       :
-  github           : "dc3505"
+  github           : "CDWJ"
   google_plus      :
   keybase          :
   instagram        :
