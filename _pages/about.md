@@ -17,10 +17,22 @@ redirect_from:
 </style>
 
 I'm currently a PhD student at Georgia Tech studying Computer Science. Currently, I'm luckily advised by Prof. [Bo Zhu](https://faculty.cc.gatech.edu/~bozhu/). Previsouly, I was fortune to working with Prof. [Changxi Zheng](http://www.cs.columbia.edu/~cxz/) and [Ziwei Zhu](https://2iw31zhv.github.io/) at Columbia University during my Master's Degree and Prof. [Adriana Schulz](https://homes.cs.washington.edu/~adriana/) and [Ben Jones](https://homes.cs.washington.edu/~benjones/) at GRAIL during my undergrad at Paul G. Allen School at University of Washington.
-Here is my [CV](./files/duowenchen_cv-8-13.pdf).
+Here is my [CV](../files/duowenchen_cv_2025.pdf).
 ## Research
 <p>
   <div id='pubContainer'>
+    <div id='paper'>
+      <div>
+        <img id="paperimg" src="../images/neural_pls.png" alt="neural_pls" />
+      </div>
+      <div id="paperinfo">
+        <b>A Neural Particle Level Set Method for Dynamic Interface Tracking</b><br />
+        <i>ACM Transactions on Graphics (To be presented at Siggraph 2025)</i><br />
+        <b>Duowen Chen</b>, Junwei Zhou, Bo Zhu<br />
+        <a nonsmooth="1" href="../projects/neural-pls-project-page/static/pdfs/neural-pls.pdf" class="">Paper</a>
+        <a nonsmooth="1" href="../projects/neural-pls-project-page/index.html" class="">Project Page</a>
+      </div>
+    </div>
     <div id='paper'>
       <div>
         <img id="paperimg" src="../projects/pfm-sfi-project-page/static/images/representative.jpg" alt="sfi"/>
@@ -41,9 +53,8 @@ Here is my [CV](./files/duowenchen_cv-8-13.pdf).
         <b>Particle Laden Fluid on Flow Maps</b><br />
         <i>ACM Transactions on Graphics (SIGGRAPH ASIA 2024)</i><br />
         Zhiqi Li, <b>Duowen Chen</b>, Candong Lin, Jinyuan Liu, Bo Zhu<br />
-        <!-- <a nonsmooth="1" href="../projects/pfm-sfi-project-page/static/pdfs/SASIA_2024__Solid_Fluid_Interaction_on_Particle_Flow_Maps.pdf" class="">Paper</a> -->
-        <!-- <a nonsmooth="1" href="../projects/pfm-sfi-project-page/index.html" class="">Project Page</a> -->
-        <!-- <br /> -->
+        <a nonsmooth="1" href="https://arxiv.org/pdf/2409.06246" class="">Paper</a>
+        <a nonsmooth="1" href="https://pearseven.github.io/LadenFlowProject/" class="">Project Page</a>
       </div>
     </div>
     <div id='paper'>
@@ -54,8 +65,8 @@ Here is my [CV](./files/duowenchen_cv-8-13.pdf).
         <b>An Eulerian Vortex Method on Flow Maps</b><br />
         <i>ACM Transactions on Graphics (SIGGRAPH ASIA 2024)</i><br />
         Sinan Wang, Yitong Deng, Molin Deng, Hong-Xing Yu, Junwei Zhou, <b>Duowen Chen</b>, Taku Komura, Jiajun Wu, Bo Zhu<br />
-        <!-- <a nonsmooth="1" href="../projects/pfm-sfi-project-page/static/pdfs/SASIA_2024__Solid_Fluid_Interaction_on_Particle_Flow_Maps.pdf" class="">Paper</a> -->
-        <!-- <a nonsmooth="1" href="../projects/pfm-sfi-project-page/index.html" class="">Project Page</a> -->
+        <a nonsmooth="1" href="https://dl.acm.org/doi/pdf/10.1145/3687996" class="">Paper</a>
+        <a nonsmooth="1" href="https://evm.sinanw.com/" class="">Project Page</a>
       </div>
     </div>
     <br />
