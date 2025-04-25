@@ -27,7 +27,7 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
       </div>
       <div id="paperinfo">
         <b>A Neural Particle Level Set Method for Dynamic Interface Tracking</b><br />
-        <i>ACM Transactions on Graphics (To be presented at Siggraph 2025)</i><br />
+        <i>ACM Transactions on Graphics (To be presented at SIGGRAPH 2025)</i><br />
         <b>Duowen Chen</b>, Junwei Zhou, Bo Zhu<br />
         <a nonsmooth="1" href="../projects/neural-pls-project-page/static/pdfs/neural-pls.pdf" class="">Paper</a>
         <a nonsmooth="1" href="../projects/neural-pls-project-page/index.html" class="">Project Page</a>
