@@ -33,6 +33,7 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
         <a nonsmooth="1" href="../projects/neural-pls-project-page/index.html" class="">Project Page</a>
       </div>
     </div>
+    <br />
     <div id='paper'>
       <div>
         <img id="paperimg" src="../projects/pfm-sfi-project-page/static/images/representative.jpg" alt="sfi"/>
@@ -45,6 +46,7 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
         <a nonsmooth="1" href="../projects/pfm-sfi-project-page/index.html" class="">Project Page</a>
       </div>
     </div>
+    <br />
     <div id='paper'>
       <div>
         <img id="paperimg" src="../images/papers_407s3.jpg" alt="laden"/>
@@ -57,6 +59,7 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
         <a nonsmooth="1" href="https://pearseven.github.io/LadenFlowProject/" class="">Project Page</a>
       </div>
     </div>
+    <br />
     <div id='paper'>
       <div>
         <img id="paperimg" src="../images/papers_1203s3.jpg" alt="eulervortex"/>
