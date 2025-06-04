@@ -23,6 +23,58 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
   <div id='pubContainer'>
     <div id='paper'>
       <div>
+        <img id="paperimg" src="../images/compressible.png" alt="compressible" />
+      </div>
+      <div id="paperinfo">
+        <b>Fluid Simulation on Compressible Flow Maps </b><br />
+        <i>ACM Transactions on Graphics (SIGGRAPH 2025)</i><br />
+        <b>Duowen Chen*</b>, Zhiqi Li* (* Joint First Author), Taiyuan Zhang, Jinjin He, Junwei Zhou, Bart G van Bloemen Waanders, Bo Zhu<br />
+        <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/static/pdfs/SIG_2025__Compressible_Flow_Map_Upload.pdf" class="">Paper</a>
+        <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/index.html" class="">Project Page</a>
+      </div>
+    </div>
+   <div id='paper'>
+      <div>
+        <img id="paperimg" src="../images/cleb.jpg" alt="cleb" />
+      </div>
+      <div id="paperinfo">
+        <b>Clebsch Gauge Fluid on Particle Flow Maps</b><br />
+        <i>ACM Transactions on Graphics (SIGGRAPH 2025)</i><br />
+        Zhiqi Li, Candong Lin, <b>Duowen Chen</b>, Xinyi Zhou, Shiying Xiong, Bo Zhu<br />
+        <!-- <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/static/pdfs/SIG_2025__Compressible_Flow_Map_Upload.pdf" class="">Paper</a>
+        <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/index.html" class="">Project Page</a> -->
+      </div>
+    </div>
+    <br />
+    <br />
+    <div id='paper'>
+      <div>
+        <img id="paperimg" src="../images/edge.jpg" alt="edge" />
+      </div>
+      <div id="paperinfo">
+        <b>EDGE: Epsilon-Difference Gradient Evolution for Buffer-Free Flow Maps</b><br />
+        <i>ACM Transactions on Graphics (SIGGRAPH 2025)</i><br />
+        Zhiqi Li*, Ruicheng Wang*, Junlin Li* (* Joint First Author), <b>Duowen Chen</b>, Sinan Wang, Bo Zhu<br />
+        <!-- <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/static/pdfs/SIG_2025__Compressible_Flow_Map_Upload.pdf" class="">Paper</a>
+        <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/index.html" class="">Project Page</a> -->
+      </div>
+    </div>
+    <br />
+    <div id='paper'>
+      <div>
+        <img id="paperimg" src="../images/vpfm.jpg" alt="vpfm" />
+      </div>
+      <div id="paperinfo">
+        <b>Fluid Simulation on Vortex Particle Flow Maps</b><br />
+        <i>ACM Transactions on Graphics (SIGGRAPH 2025)</i><br />
+        Sinan Wang, Junwei Zhou, Fan Feng, Zhiqi Li, Yuchen Sun, <b>Duowen Chen</b>, Greg Turk, Bo Zhu<br />
+        <!-- <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/static/pdfs/SIG_2025__Compressible_Flow_Map_Upload.pdf" class="">Paper</a>
+        <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/index.html" class="">Project Page</a> -->
+      </div>
+    </div>
+    <br />
+    <div id='paper'>
+      <div>
         <img id="paperimg" src="../images/neural_pls.png" alt="neural_pls" />
       </div>
       <div id="paperinfo">
