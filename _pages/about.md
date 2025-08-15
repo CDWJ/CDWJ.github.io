@@ -58,7 +58,6 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
       </div>
     </div>
     <br />
-    <br />
     <div id='paper'>
       <div>
         <img id="paperimg" src="../images/edge.jpg" alt="edge" />
@@ -71,7 +70,6 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
         <a nonsmooth="1" href="https://pearseven.github.io/EDGEProject/" class="">Project Page</a>
       </div>
     </div>
-    <br />
     <div id='paper'>
       <div>
         <img id="paperimg" src="../images/vpfm.jpg" alt="vpfm" />
@@ -84,7 +82,6 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
         <a nonsmooth="1" href="https://vpfm.sinanw.com/" class="">Project Page</a>
       </div>
     </div>
-    <br />
     <div id='paper'>
       <div>
         <img id="paperimg" src="../images/neural_pls.png" alt="neural_pls" />
