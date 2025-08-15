@@ -16,11 +16,23 @@ redirect_from:
     #abstract{position:relative;border-top:1px solid gray;width:694px;display:none;margin-top:-1px;padding:10px;background:#f0f0f0!important;border-bottom-left-radius:5px;border-bottom-right-radius:5px;font-size:14px;color:#222}
 </style>
 
-I'm currently a PhD student at Georgia Tech studying Computer Science. Currently, I'm luckily advised by Prof. [Bo Zhu](https://faculty.cc.gatech.edu/~bozhu/). Previsouly, I was fortune to working with Prof. [Changxi Zheng](http://www.cs.columbia.edu/~cxz/) and [Ziwei Zhu](https://2iw31zhv.github.io/) at Columbia University during my Master's Degree and Prof. [Adriana Schulz](https://homes.cs.washington.edu/~adriana/) and [Ben Jones](https://homes.cs.washington.edu/~benjones/) at GRAIL during my undergrad at Paul G. Allen School at University of Washington.
+I'm a fourth year PhD student at Georgia Tech studying Computer Science. Currently, I'm luckily advised by Prof. [Bo Zhu](https://faculty.cc.gatech.edu/~bozhu/). Previsouly, I was fortune to working with Prof. [Changxi Zheng](http://www.cs.columbia.edu/~cxz/) and [Ziwei Zhu](https://2iw31zhv.github.io/) at Columbia University during my Master's Degree and Prof. [Adriana Schulz](https://homes.cs.washington.edu/~adriana/) and [Ben Jones](https://homes.cs.washington.edu/~benjones/) at GRAIL during my undergrad at Paul G. Allen School at University of Washington.
 Here is my [CV](../files/duowenchen_cv_2025.pdf).
 ## Research
 <p>
   <div id='pubContainer'>
+  <div id='paper'>
+      <div>
+        <img id="paperimg" src="../images/fluid_composer.png" alt="composer" />
+      </div>
+      <div id="paperinfo">
+        <b>Fluid Composer: Fluid Detail Composition and Rendering Using Video Diffusion Models</b><br />
+        <i>In Submission</i><br />
+        <b>Duowen Chen</b>, Zhiqiang Lao, Yu Guo, Heather Yu<br />
+        <!-- <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/static/pdfs/SIG_2025__Compressible_Flow_Map_Upload.pdf" class="">Paper</a>
+        <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/index.html" class="">Project Page</a> -->
+      </div>
+    </div>
     <div id='paper'>
       <div>
         <img id="paperimg" src="../images/compressible.png" alt="compressible" />
