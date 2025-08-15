@@ -53,8 +53,8 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
         <b>Clebsch Gauge Fluid on Particle Flow Maps</b><br />
         <i>ACM Transactions on Graphics (SIGGRAPH 2025)</i><br />
         Zhiqi Li, Candong Lin, <b>Duowen Chen</b>, Xinyi Zhou, Shiying Xiong, Bo Zhu<br />
-        <!-- <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/static/pdfs/SIG_2025__Compressible_Flow_Map_Upload.pdf" class="">Paper</a>
-        <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/index.html" class="">Project Page</a> -->
+        <a nonsmooth="1" href="https://pearseven.github.io/PFMClebschProject/static/pdfs/SIG_2025__Clebsch_PFM_Upload.pdf" class="">Paper</a>
+        <a nonsmooth="1" href="https://pearseven.github.io/PFMClebschProject/" class="">Project Page</a>
       </div>
     </div>
     <br />
@@ -67,8 +67,8 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
         <b>EDGE: Epsilon-Difference Gradient Evolution for Buffer-Free Flow Maps</b><br />
         <i>ACM Transactions on Graphics (SIGGRAPH 2025)</i><br />
         Zhiqi Li*, Ruicheng Wang*, Junlin Li* (* Joint First Author), <b>Duowen Chen</b>, Sinan Wang, Bo Zhu<br />
-        <!-- <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/static/pdfs/SIG_2025__Compressible_Flow_Map_Upload.pdf" class="">Paper</a>
-        <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/index.html" class="">Project Page</a> -->
+        <a nonsmooth="1" href="https://pearseven.github.io/EDGEProject/static/pdfs/SIG_2025__Buffer_free_flow_map.pdf" class="">Paper</a>
+        <a nonsmooth="1" href="https://pearseven.github.io/EDGEProject/" class="">Project Page</a>
       </div>
     </div>
     <br />
@@ -80,8 +80,8 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
         <b>Fluid Simulation on Vortex Particle Flow Maps</b><br />
         <i>ACM Transactions on Graphics (SIGGRAPH 2025)</i><br />
         Sinan Wang, Junwei Zhou, Fan Feng, Zhiqi Li, Yuchen Sun, <b>Duowen Chen</b>, Greg Turk, Bo Zhu<br />
-        <!-- <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/static/pdfs/SIG_2025__Compressible_Flow_Map_Upload.pdf" class="">Paper</a>
-        <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/index.html" class="">Project Page</a> -->
+        <a nonsmooth="1" href="https://arxiv.org/pdf/2505.21946" class="">Paper</a>
+        <a nonsmooth="1" href="https://vpfm.sinanw.com/" class="">Project Page</a>
       </div>
     </div>
     <br />
