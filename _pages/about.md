@@ -21,16 +21,18 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
 ## Research
 <p>
   <div id='pubContainer'>
-    <!-- <div id='paper'>
+    <div id='paper'>
       <div>
         <img id="paperimg" src="../images/fluid_composer.png" alt="composer" />
       </div>
       <div id="paperinfo">
         <b>Fluid Composer: Fluid Detail Composition and Rendering Using Video Diffusion Models</b><br />
-        <i>In Submission</i><br />
+        <i>Computer Graphics Forum</i><br />
         <b>Duowen Chen</b>, Zhiqiang Lao, Yu Guo, Heather Yu<br />
+        <a nonsmooth="1" href="../projects/fluid-composer/static/pdfs/composer.pdf" class="">Paper</a>
+        <a nonsmooth="1" href="../projects/fluid-composer/index.html" class="">Project Page</a>
       </div>
-    </div> -->
+    </div>
     <div id='paper'>
       <div>
         <img id="paperimg" src="../images/compressible.png" alt="compressible" />
