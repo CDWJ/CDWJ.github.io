@@ -41,7 +41,7 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
       <div id="paperinfo">
         <b>An Adjoint Method for Differentiable Fluid Simulation on Flow Maps</b><br />
         <i>SIGGRAPH ASIA 2025 (Conference Track)</i><br />
-        Zhiqi Li*, Jinjin He*(* Joint First Author), Barnabás Börcsök, Taiyuan Zhang, <b>Duowen Chen</b>, Tao Du, Ming Lin, Greg Turk, Bo Zhu 
+        Zhiqi Li*, Jinjin He*(* Joint First Author), Barnabás Börcsök, Taiyuan Zhang, <b>Duowen Chen</b>, Tao Du, Ming Lin, Greg Turk, Bo Zhu<br />
         <a nonsmooth="1" href="https://arxiv.org/abs/2511.01259" class="">Paper</a>
         <a nonsmooth="1" href="https://pearseven.github.io/DiffFMProject/" class="">Project Page</a>
       </div>
