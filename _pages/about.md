@@ -33,6 +33,20 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
         <a nonsmooth="1" href="../projects/fluid-composer/index.html" class="">Project Page</a>
       </div>
     </div>
+
+    <div id='paper'>
+      <div>
+        <img id="paperimg" src="../images/ajoint.png" alt="ajoint" />
+      </div>
+      <div id="paperinfo">
+        <b>An Adjoint Method for Differentiable Fluid Simulation on Flow Maps</b><br />
+        <i>SIGGRAPH ASIA 2025 (Conference Track)</i><br />
+        Zhiqi Li*, Jinjin He*(* Joint First Author), Barnabás Börcsök, Taiyuan Zhang, <b>Duowen Chen</b>, Tao Du, Ming Lin, Greg Turk, Bo Zhu 
+        <a nonsmooth="1" href="https://arxiv.org/abs/2511.01259" class="">Paper</a>
+        <a nonsmooth="1" href="https://pearseven.github.io/DiffFMProject/" class="">Project Page</a>
+      </div>
+    </div>
+    
     <div id='paper'>
       <div>
         <img id="paperimg" src="../images/compressible.png" alt="compressible" />
@@ -45,6 +59,7 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
         <a nonsmooth="1" href="../projects/compressible-flowmap-project-page/index.html" class="">Project Page</a>
       </div>
     </div>
+
    <div id='paper'>
       <div>
         <img id="paperimg" src="../images/cleb.jpg" alt="cleb" />
