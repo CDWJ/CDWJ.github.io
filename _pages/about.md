@@ -18,9 +18,37 @@ redirect_from:
 
 I'm a fourth year PhD student at Georgia Tech studying Computer Science. Currently, I'm luckily advised by Prof. [Bo Zhu](https://faculty.cc.gatech.edu/~bozhu/). Previsouly, I was fortune to working with Prof. [Changxi Zheng](http://www.cs.columbia.edu/~cxz/) and [Ziwei Zhu](https://2iw31zhv.github.io/) at Columbia University during my Master's Degree and Prof. [Adriana Schulz](https://homes.cs.washington.edu/~adriana/) and [Ben Jones](https://homes.cs.washington.edu/~benjones/) at GRAIL during my undergrad at Paul G. Allen School at University of Washington.
 Here is my [CV](../files/duowenchen_cv_2025.pdf).
-## Research
+
+## Publications
+
 <p>
   <div id='pubContainer'>
+    <div id='paper'>
+      <div>
+        <img id="paperimg" src="../images/pfm_jcp.png" alt="composer" />
+      </div>
+      <div id="paperinfo">
+        <b>An Impulse-formed Navier-Stokes Solver based on Long-range Particle Flow Maps</b><br />
+        <i>In Submission to Journal of Computational Physics</i><br />
+        Zhiqi Li*, <b>Duowen Chen*</b>, Junwei Zhou* (* Joint First Author), Sinan Wang, Yuchen Sun, Bo Zhu<br />
+        <!-- <a nonsmooth="1" href="../projects/fluid-composer/static/pdfs/composer.pdf" class="">Paper</a> -->
+        <!-- <a nonsmooth="1" href="../projects/fluid-composer/index.html" class="">Project Page</a> -->
+      </div>
+    </div>
+
+    <div id='paper'>
+      <div>
+        <img id="paperimg" src="../images/pfm_ls.jpg" alt="composer" />
+      </div>
+      <div id="paperinfo">
+        <b>A Level Set Method on Particle Flow Maps</b><br />
+        <i>In Submission to Journal of Computational Physics</i><br />
+        Jinjin He, Taiyuan Zhang, Zhiqi Li, Junwei Zhou, <b>Duowen Chen</b>, Bo Zhu<br />
+        <!-- <a nonsmooth="1" href="../projects/fluid-composer/static/pdfs/composer.pdf" class="">Paper</a> -->
+        <!-- <a nonsmooth="1" href="../projects/fluid-composer/index.html" class="">Project Page</a> -->
+      </div>
+    </div>
+
     <div id='paper'>
       <div>
         <img id="paperimg" src="../images/fluid_composer.png" alt="composer" />
@@ -103,7 +131,7 @@ Here is my [CV](../files/duowenchen_cv_2025.pdf).
       </div>
       <div id="paperinfo">
         <b>A Neural Particle Level Set Method for Dynamic Interface Tracking</b><br />
-        <i>ACM Transactions on Graphics (To be presented at SIGGRAPH 2025)</i><br />
+        <i>ACM Transactions on Graphics (Presented at SIGGRAPH 2025)</i><br />
         <b>Duowen Chen</b>, Junwei Zhou, Bo Zhu<br />
         <a nonsmooth="1" href="../projects/neural-pls-project-page/static/pdfs/neural-pls.pdf" class="">Paper</a>
         <a nonsmooth="1" href="../projects/neural-pls-project-page/index.html" class="">Project Page</a>
