@@ -106,8 +106,7 @@ Here is my [CV](../files/duowenchen_2026.pdf).
         <b>An Impulse-formed Navier-Stokes Solver based on Long-range Particle Flow Maps</b><br />
         <i>In Submission to Journal of Computational Physics</i><br />
         Zhiqi Li*, <b>Duowen Chen*</b>, Junwei Zhou* (* Joint First Author), Sinan Wang, Yuchen Sun, Bo Zhu<br />
-        <!-- <a nonsmooth="1" href="../projects/fluid-composer/static/pdfs/composer.pdf" class="">Paper</a> -->
-        <!-- <a nonsmooth="1" href="../projects/fluid-composer/index.html" class="">Project Page</a> -->
+        <a nonsmooth="1" href="https://arxiv.org/pdf/2602.00499" class="">Paper</a>
       </div>
     </div>
 
@@ -119,8 +118,7 @@ Here is my [CV](../files/duowenchen_2026.pdf).
         <b>A Level Set Method on Particle Flow Maps</b><br />
         <i>In Submission to IJNME</i><br />
         Jinjin He, Taiyuan Zhang, Zhiqi Li, Junwei Zhou, <b>Duowen Chen</b>, Bo Zhu<br />
-        <!-- <a nonsmooth="1" href="../projects/fluid-composer/static/pdfs/composer.pdf" class="">Paper</a> -->
-        <!-- <a nonsmooth="1" href="../projects/fluid-composer/index.html" class="">Project Page</a> -->
+        <a nonsmooth="1" href="https://arxiv.org/pdf/2601.09939" class="">Paper</a>
       </div>
     </div>
 
