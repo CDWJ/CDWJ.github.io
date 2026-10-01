@@ -75,6 +75,32 @@ Here is my [CV](../files/duowenchen_2026.pdf).
   <div class='pubContainer'>
     <div class='paper-entry'>
       <div>
+        <img class="paperimg" src="../images/wildfire_vlm.jpg" alt="wildfire vlm" />
+      </div>
+      <div class="paperinfo">
+        <b>A Simulation-Grounded Agentic VLM Framework for Wildfire Monitoring and Reporting</b><br />
+        <i>Preprint (Under Review)</i><br />
+        <b>Duowen Chen</b>, Yuchen Sun, Zhiqi Li, Yuxuan Liao, Sinan Wang, Bart van Bloemen Waanders, Bo Zhu<br />
+        <a nonsmooth="1" href="../projects/wildfire-vlm/static/pdfs/wildfire_vlm.pdf" class="">Paper</a>
+        <a nonsmooth="1" href="../projects/wildfire-vlm/index.html" class="">Project Page</a>
+      </div>
+    </div>
+
+    <div class='paper-entry'>
+      <div>
+        <img class="paperimg" src="../images/audible_world_models.png" alt="audible world models" />
+      </div>
+      <div class="paperinfo">
+        <b>Audible World Models: Spatially Aware Sound Generation for 3D Worlds</b><br />
+        <i>Conference on Neural Information Processing Systems (NeurIPS 2026)</i><br />
+        <b>Duowen Chen</b>, Jinjin He, Gouthaman KV, Sandeep Bangalore Venkatesh, Bo Zhu<br />
+        <a nonsmooth="1" href="https://arxiv.org/abs/2609.38444" class="">Paper</a>
+        <a nonsmooth="1" href="../projects/audible-world-models/index.html" class="">Project Page</a>
+      </div>
+    </div>
+
+    <div class='paper-entry'>
+      <div>
         <img class="paperimg" src="../images/cumulative_flow_map.png" alt="cumulative flow map" />
       </div>
       <div class="paperinfo">
@@ -116,7 +142,7 @@ Here is my [CV](../files/duowenchen_2026.pdf).
       </div>
       <div class="paperinfo">
         <b>A Level Set Method on Particle Flow Maps</b><br />
-        <i>In Submission to IJNME</i><br />
+        <i>International Journal for Numerical Methods in Engineering (IJNME)</i><br />
         Jinjin He, Taiyuan Zhang, Zhiqi Li, Junwei Zhou, <b>Duowen Chen</b>, Bo Zhu<br />
         <a nonsmooth="1" href="https://arxiv.org/pdf/2601.09939" class="">Paper</a>
       </div>

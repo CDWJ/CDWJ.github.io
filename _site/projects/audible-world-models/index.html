@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Training-free audible world modeling for grounding generated sound sources in 3D geometry and rendering listener-dependent spatial audio.">
+  <meta property="og:title" content="Audible World Models: Spatially Aware Sound Generation for 3D Worlds">
+  <meta property="og:description" content="Project page for training-free audible world modeling with semantic sound sources, geometric grounding, and listener-dependent acoustic propagation.">
+  <meta property="og:image" content="static/images/teaser.jpg">
+    <meta name="twitter:title" content="Audible World Models: Spatially Aware Sound Generation for 3D Worlds">
+  <meta name="twitter:description" content="Project page for training-free audible world modeling with semantic sound sources, geometric grounding, and listener-dependent acoustic propagation.">
+  <meta name="twitter:image" content="static/images/teaser.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords" content="world models, spatial audio, text-to-sound, sound synthesis, acoustic rendering">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Audible World Models: Spatially Aware Sound Generation for 3D Worlds</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+
+  <style>
+    :root {
+      --page-accent: #1b7f8c;
+      --page-accent-soft: #eaf5f7;
+      --page-ink: #18333b;
+      --page-border: #d8e5e8;
+      --page-shadow: 0 12px 36px rgba(19, 54, 62, 0.08);
+    }
+
+    body {
+      color: var(--page-ink);
+      background: linear-gradient(180deg, #f7fbfc 0%, #ffffff 18%, #ffffff 100%);
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top left, rgba(27, 127, 140, 0.10), transparent 32%),
+        radial-gradient(circle at top right, rgba(215, 156, 74, 0.12), transparent 28%);
+    }
+
+    .hero .publication-title {
+      max-width: 50ch;
+      margin: 0 auto;
+      line-height: 1.05;
+    }
+
+    .hero .subtitle {
+      margin-top: 1rem;
+      color: #4a636a;
+    }
+
+    .paper-note {
+      display: inline-block;
+      margin-top: 0.85rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: var(--page-accent-soft);
+      color: var(--page-accent);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    .section-card {
+      background: #fff;
+      border: 1px solid var(--page-border);
+      border-radius: 22px;
+      box-shadow: var(--page-shadow);
+      padding: 1.5rem;
+    }
+
+    .teaser-frame {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--page-border);
+      box-shadow: var(--page-shadow);
+      background: #fff;
+    }
+
+    .teaser-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .overview-grid,
+    .figure-grid,
+    .eval-grid,
+    .video-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .overview-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .mini-card,
+    .figure-card,
+    .video-card {
+      background: #fff;
+      border: 1px solid var(--page-border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--page-shadow);
+    }
+
+    .mini-card {
+      padding: 1.35rem 1.4rem;
+    }
+
+    .mini-card h3,
+    .figure-card h3,
+    .video-card h3 {
+      font-family: "Google Sans", sans-serif;
+      font-size: 1.05rem;
+    }
+
+    .eyebrow {
+      color: var(--page-accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .figure-card img,
+    .video-card video {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #091417;
+    }
+
+    .figure-card .content,
+    .video-card .content {
+      padding: 1rem 1rem 1.15rem;
+    }
+
+    .video-card .content {
+      padding: 0.85rem 1rem;
+    }
+
+    .video-card h3 {
+      margin: 0;
+      text-align: center;
+    }
+
+    .example-list {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .example-row {
+      background: #fff;
+      border: 1px solid var(--page-border);
+      border-radius: 22px;
+      box-shadow: var(--page-shadow);
+      padding: 1.25rem;
+    }
+
+    .example-header {
+      margin-bottom: 1rem;
+    }
+
+    .example-scene {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--page-accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .example-prompt {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: #324d54;
+    }
+
+    .example-videos {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .method-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+    }
+
+    .method-pill {
+      background: var(--page-accent-soft);
+      color: var(--page-accent);
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .video-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: baseline;
+      margin-bottom: 0.4rem;
+    }
+
+    .session-tag {
+      font-size: 0.8rem;
+      color: #6a8086;
+      font-family: monospace;
+    }
+
+    .footer-note {
+      color: #64777d;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .publication-links {
+      margin-top: 1.2rem;
+    }
+
+    .is-coming-soon {
+      opacity: 0.55;
+      cursor: default;
+    }
+
+    .teaser-caption {
+      margin: 0;
+      padding: 0.9rem 1.1rem 1rem;
+      border-top: 1px solid var(--page-border);
+      color: #4a636a;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .listen-note {
+      text-align: center;
+      color: #64777d;
+      font-size: 0.9rem;
+      margin: 0.4rem 0 1.5rem;
+    }
+
+    .video-card.is-ours {
+      border: 2px solid var(--page-accent);
+    }
+
+    .video-card.is-ours h3 {
+      color: var(--page-accent);
+    }
+
+    .more-examples {
+      margin-top: 1.5rem;
+    }
+
+    .more-examples summary {
+      display: block;
+      width: fit-content;
+      margin: 0 auto 1.5rem;
+      padding: 0.6rem 1.3rem;
+      border-radius: 999px;
+      background: var(--page-accent);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .more-examples summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .more-examples[open] summary {
+      display: none;
+    }
+
+    #bibtex pre {
+      background: #f4f8f9;
+      border: 1px solid var(--page-border);
+      border-radius: 12px;
+      font-size: 0.85rem;
+    }
+
+    .footer {
+      background: #f7fbfc;
+      padding: 2rem 1.5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      .section-card {
+        padding: 1.1rem;
+      }
+
+      .overview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .example-row {
+        padding: 1rem;
+      }
+
+      .example-videos {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Audible World Models: Spatially Aware Sound Generation for 3D Worlds</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Duowen Chen<sup>1</sup>,</span>
+              <span class="author-block">Jinjin He<sup>1</sup>,</span>
+              <span class="author-block">Gouthaman KV<sup>2</sup>,</span>
+              <span class="author-block">Sandeep Bangalore Venkatesh<sup>2</sup>,</span>
+              <span class="author-block">Bo Zhu<sup>1</sup></span>
+            </div>
+            <div class="is-size-6 publication-authors">
+              <span class="author-block"><sup>1</sup>Georgia Institute of Technology</span>
+              <span class="author-block"><sup>2</sup>Dolby Laboratories</span>
+            </div>
+            <p class="subtitle is-5">A training-free framework that turns generated visual worlds into explicit audible world states with semantic sound sources, geometric grounding, and listener-dependent acoustic propagation.</p>
+            <div class="paper-note">NeurIPS 2026</div>
+
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2609.38444" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <!-- TODO: replace with GitHub link, e.g. href="https://github.com/..." and remove the is-coming-soon class -->
+                <a class="external-link button is-normal is-rounded is-dark is-coming-soon" title="Code coming soon">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code (Coming Soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#examples" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-volume-up"></i></span>
+                  <span>Video Examples</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#bibtex" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-quote-right"></i></span>
+                  <span>BibTeX</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div class="teaser-frame">
+          <img src="static/images/teaser.jpg" alt="Pipeline overview of Audible World Models.">
+          <p class="teaser-caption">From a single text prompt, Audible World Models builds a panoramic 3D proxy, identifies sound-producing objects and ambient regions, synthesizes dry audio for each source, anchors the sources to reconstructed geometry, and renders listener-dependent spatial audio with geometric acoustic propagation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light" id="abstract">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified section-card">
+            <p>
+              Text- and image-conditioned world generators can create visually rich 3D environments, yet these worlds often remain silent or rely on soundtracks synthesized solely from text or rendered video. Although such audio can convey what should be heard, it lacks an explicit representation of where sound sources are located and how their perceived sound should vary with listener movement.
+            </p>
+            <p>
+              We introduce <em>Audible World Models</em>, a training-free framework that incorporates sound into the generated world state. Starting from a text prompt, our system constructs a panoramic 3D proxy, separates it into semantic layers, identifies sound-producing foreground objects and ambient background regions, and synthesizes dry audio for each sound label. It then anchors these sources to reconstructed geometry and renders listener-dependent spatial audio using geometric acoustic propagation. By explicitly linking semantics, geometry, and sound propagation, the framework maintains persistent source locations while adapting the rendered audio to changes in listener viewpoint and motion.
+            </p>
+            <p>
+              Experiments across 80 generated scenes demonstrate substantial gains in spatial consistency over text-, video-, and panorama-conditioned baselines, while preserving competitive semantic alignment. VLM-based assessments and human evaluations further indicate that our soundtracks are preferred for their audio&ndash;visual consistency, spatial plausibility, and motion-dependent behavior.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">System Overview</h2>
+      <div class="overview-grid">
+        <div class="mini-card">
+          <div class="eyebrow">Stage 1</div>
+          <h3>Panoramic World Proxy</h3>
+          <p>A text prompt is converted into a global panorama and layered 3D proxy, giving the system access to audible sources that may sit outside the current rendered view.</p>
+        </div>
+        <div class="mini-card">
+          <div class="eyebrow">Stage 2</div>
+          <h3>Semantic Audio Inventory</h3>
+          <p>VLM agents parse foreground objects and broader background regions, assign concise sound descriptions, and mark each source as localized or diffuse for later spatialization.</p>
+        </div>
+        <div class="mini-card">
+          <div class="eyebrow">Stage 3</div>
+          <h3>Source Synthesis and Grounding</h3>
+          <p>Text-to-audio synthesis produces dry clips for each label. Localized sounds are placed on object meshes or world sheets, and diffuse sounds are distributed over semantic background regions.</p>
+        </div>
+        <div class="mini-card">
+          <div class="eyebrow">Stage 4</div>
+          <h3>Acoustic Rendering</h3>
+          <p>An acoustic parameter agent selects stable scene and source settings, then GSound renders binaural, listener-dependent audio through geometry-aware propagation along the trajectory.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="examples">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Representative Video Examples</h2>
+      <p class="has-text-centered">
+        Each scene compares three soundtracks for the same camera trajectory: <strong>Stable Audio Generation</strong> (text-conditioned), <strong>MMAudio</strong> (video-conditioned), and <strong>Ours</strong>.
+      </p>
+      <p class="listen-note"><i class="fas fa-headphones"></i> Headphones recommended to hear the spatial (binaural) effects. Videos and audio are compressed for the web.</p>
+      <div class="example-list">
+
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A watercolor panorama of a windy beach concert, distant stage lights and crowd shapes, foreground as broad wet sand wash, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774723309/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774723309/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774723309/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A metal foundry with a glowing ladle edge and heat shimmer in the foreground, workers midground in protective gear, and towering furnaces with overhead cranes in the background, photoreal, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774915432/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774915432/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774915432/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A distant panorama of a crowded beach boardwalk, dense movement and kiosks in the distance, foreground kept as open sand strip, photoreal, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774902051/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774902051/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774902051/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A Monet-inspired impressionist scene of a wide meadow with distant poplars and a pale sky, foreground kept as soft color fields, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1773992676/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1773992676/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1773992676/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A distant view of a large outdoor concert in a park, stage lights and crowd concentrated midground, foreground kept as empty grass and sky, photoreal, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774899850/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774899850/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774899850/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A wide view of a riverfront festival at night, a dense band of lights and crowds across the midground, foreground kept as dark open water, photoreal, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774868669/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774868669/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="metadata">
+                <source src="collected_session_videos/session_1774868669/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <details class="more-examples">
+          <summary>Show 20 more scenes</summary>
+          <div class="example-list">
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A wide desert highway at night, a long line of distant headlights and taillights, foreground kept as empty sand and scrub, cinematic realism, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774864576/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774864576/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774864576/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A broad view of a factory yard, forklifts and loading docks active in the distance with flashing lights, foreground kept as an empty paved apron, photoreal, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774862817/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774862817/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774862817/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A temple courtyard in rain: a close stone lantern and wet tiles in the foreground, visitors midground under umbrellas, and a gate with hanging bells in the background with mist, photoreal, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774859418/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774859418/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774859418/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A school hallway between classes: a close row of lockers and posters in the foreground, students midground, and a bright stairwell and doors in the background, photoreal, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774856589/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774856589/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774856589/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A rural grain elevator site: a close gravel shoulder and road sign in the foreground, trucks midground, and tall silos with conveyor structures in the background under a wide sky, photoreal, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774854731/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774854731/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774854731/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A Monet-inspired impressionist view of a crowded riverside fair, colorful dots of people and lanterns across the midground, foreground as soft open water and reflections, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774112026/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774112026/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774112026/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A large rail yard panorama, multiple freight trains and signal lights in the distance, foreground mostly empty ballast and track edges, photoreal, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774818388/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774818388/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774818388/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A wide panorama of a container port at dawn, cranes and forklifts active in the distance with flashing beacons, foreground mostly open water and empty pier edge, photoreal, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774813138/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774813138/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774813138/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A busy commercial kitchen: a stainless prep counter with utensils in the foreground, cooks moving midground, and stoves with vents and shelves in the background under harsh task lighting, photoreal, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774809789/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774809789/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774809789/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A train station platform at dusk: a luggage suitcase and yellow safety line in the foreground, commuters waiting midground, and an arriving train with signal lights in the background beneath a long canopy, photoreal, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774730863/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774730863/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1774730863/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A low-poly stylized scene of an open prairie with a distant wind farm, simple shapes, big sky, minimal foreground objects, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1773986894/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1773986894/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1773986894/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A watercolor illustration of a wide coastal horizon with soft waves and distant sailboats, lots of negative space, gentle washes, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1773874847/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1773874847/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1773874847/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A high mountain plateau with distant snow peaks, broad open rock and sparse grass, foreground kept empty, wide-angle realism, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1773868876/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1773868876/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1773868876/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A downtown street parade at noon, with marching performers, confetti in the air, storefront reflections, crowd barriers, and a cross street filled with sunlight, realistic wide-angle.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1773632234/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1773632234/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1773632234/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A small village square, with a fountain in the center, people chatting near the shops, and a bicycle passing along the edge of the square.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772605514/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772605514/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772605514/gsound_out_traj.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A subway tunnel platform, with a train approaching in the distance, footsteps along the platform, and scattered voices under the station lights.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772602293/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772602293/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772602293/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A beach at golden hour, with waves breaking on the left, children playing near the water, and seagulls circling above.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772603148/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772603148/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772603148/gsound_new_traj_out.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A working orchard during harvest, with long rows of trees, crates and ladders, a small tractor on a dirt lane, and a gravel road leading to a shed, photoreal natural light.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772858519/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772858519/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772858519/gsound_out_traj.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A windswept coastal village quay with boats and fluttering flags, post-impressionist painting inspired by Vincent van Gogh, bold swirling strokes, dramatic sky, vivid color, no text.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772868994/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772868994/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772868994/gsound_out_traj.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+        <div class="example-row">
+          <div class="example-header">
+            <div class="example-scene">Scene Prompt</div>
+            <p class="example-prompt">A riverside summer festival at sunset, with a small live band on an open-air stage, food trucks and string lights along the path, crowds moving between stalls, and water reflecting the last light, cinematic wide shot.</p>
+          </div>
+          <div class="example-videos">
+            <div class="video-card">
+              <div class="content"><h3>Stable Audio Generation</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772908963/stable_audio_generation.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card">
+              <div class="content"><h3>MMAudio</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772908963/mmaudio_render_silent.mp4" type="video/mp4">
+              </video>
+            </div>            <div class="video-card is-ours">
+              <div class="content"><h3>Ours</h3></div>
+              <video controls playsinline preload="none">
+                <source src="collected_session_videos/session_1772908963/gsound_out_traj.mp4" type="video/mp4">
+              </video>
+            </div>          </div>
+        </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="bibtex">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3">BibTeX</h2>
+      <pre><code>@inproceedings{chen2026audible,
+  title     = {Audible World Models: Spatially Aware Sound Generation for 3D Worlds},
+  author    = {Chen, Duowen and He, Jinjin and KV, Gouthaman and Bangalore Venkatesh, Sandeep and Zhu, Bo},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2026}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-note">
+        <a href="../../">Duowen Chen</a> &middot; Page template adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

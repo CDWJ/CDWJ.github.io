@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="A simulation-grounded agentic VLM framework that converts 2D wildfire simulations into labeled videos and uses them as memory for multi-agent wildfire reporting.">
+  <meta property="og:title" content="A Simulation-Grounded Agentic VLM Framework for Wildfire Monitoring and Reporting">
+  <meta property="og:description" content="Project page for a VLM-physics coupled wildfire prediction and reporting framework.">
+  <meta property="og:image" content="static/images/wildfire_report/teaser.jpg">
+    <meta name="twitter:title" content="A Simulation-Grounded Agentic VLM Framework for Wildfire Monitoring and Reporting">
+  <meta name="twitter:description" content="Project page for a VLM-physics coupled wildfire prediction and reporting framework.">
+  <meta name="twitter:image" content="static/images/wildfire_report/teaser.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords" content="wildfire, vision-language model, multi-agent systems, simulation, memory retrieval">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>A Simulation-Grounded Agentic VLM Framework for Wildfire Monitoring and Reporting</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+
+  <style>
+    :root {
+      --ink: #20342d;
+      --muted: #66726d;
+      --accent: #b84a2f;
+      --accent-2: #1f7a68;
+      --accent-3: #355f94;
+      --soft: #f4f8f5;
+      --soft-2: #f9f4ef;
+      --line: #d9e2dc;
+      --panel: #ffffff;
+      --shadow: 0 12px 32px rgba(31, 52, 45, 0.08);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      color: var(--ink);
+      background: linear-gradient(180deg, #f6faf7 0%, #ffffff 28%, #ffffff 100%);
+    }
+
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(31, 122, 104, 0.10), transparent 36%),
+        linear-gradient(315deg, rgba(184, 74, 47, 0.12), transparent 35%),
+        #fbfdfb;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .publication-title {
+      max-width: 920px;
+      margin: 0 auto;
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      color: #53645e;
+      max-width: 880px;
+      margin: 1rem auto 0;
+    }
+
+    .paper-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 0.95rem;
+      padding: 0.42rem 0.72rem;
+      border: 1px solid rgba(184, 74, 47, 0.26);
+      border-radius: 999px;
+      color: var(--accent);
+      background: #fff7f4;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .section-band {
+      background: var(--soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-kicker {
+      color: var(--accent-2);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.45rem;
+      text-transform: uppercase;
+    }
+
+    .hero-image {
+      display: block;
+      width: 100%;
+      background: #fff;
+    }
+
+    .teaser-figure {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .teaser-caption {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin: 0;
+      padding: 0.9rem 1rem 1rem;
+    }
+
+    .overview-grid,
+    .figure-grid,
+    .metric-grid,
+    .video-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .overview-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .section-lede {
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0.45rem auto 0;
+      max-width: 760px;
+    }
+
+    .system-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.25fr);
+      gap: 1.4rem;
+      margin-top: 1.5rem;
+      align-items: start;
+    }
+
+    .pipeline-rail {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .pipeline-step {
+      display: grid;
+      grid-template-columns: 3.2rem minmax(0, 1fr);
+      gap: 0.8rem;
+      align-items: start;
+      padding: 0.9rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .pipeline-step:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .pipeline-step .step-index {
+      color: var(--accent);
+      font-family: "Google Sans", sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .pipeline-step h3 {
+      font-family: "Google Sans", sans-serif;
+      font-size: 1.05rem;
+      margin: 0 0 0.28rem;
+    }
+
+    .pipeline-step p {
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .system-visual {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .system-visual img {
+      display: block;
+      width: 100%;
+      background: #fff;
+    }
+
+    .figure-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .metric-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 1.2rem;
+    }
+
+    .info-card,
+    .figure-card,
+    .metric-card,
+    .video-card,
+    .report-frame-wrap {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-card,
+    .metric-card {
+      padding: 1rem;
+    }
+
+    .info-card h3,
+    .figure-card h3,
+    .metric-card h3,
+    .video-card h3 {
+      font-family: "Google Sans", sans-serif;
+      font-size: 1rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .info-card p,
+    .metric-card p,
+    .figure-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .figure-card {
+      overflow: hidden;
+    }
+
+    .figure-card img {
+      display: block;
+      width: 100%;
+      background: #fff;
+    }
+
+    .figure-card .content {
+      padding: 0.9rem 1rem 1rem;
+    }
+
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      font-size: 0.92rem;
+    }
+
+    .result-table caption {
+      caption-side: top;
+      color: var(--ink);
+      font-family: "Google Sans", sans-serif;
+      font-weight: 700;
+      padding: 0.2rem 0 0.8rem;
+      text-align: left;
+    }
+
+    .result-table th,
+    .result-table td {
+      border-bottom: 1px solid var(--line);
+      padding: 0.62rem 0.68rem;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .result-table th {
+      background: #eef5f1;
+      color: #223a31;
+      font-weight: 800;
+    }
+
+    .result-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .result-table .best {
+      color: var(--accent-2);
+      font-weight: 800;
+    }
+
+    .result-table .second-best {
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 0.14em;
+    }
+
+    .result-table .oracle {
+      color: var(--accent-3);
+      font-weight: 800;
+    }
+
+    .table-pair {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      align-items: start;
+    }
+
+    .ablation-layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 1.25rem;
+      margin-top: 1.4rem;
+      align-items: start;
+    }
+
+    .takeaway-panel {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      position: sticky;
+      top: 1rem;
+    }
+
+    .takeaway-panel h3 {
+      font-family: "Google Sans", sans-serif;
+      font-size: 1rem;
+      margin: 0 0 0.8rem;
+    }
+
+    .takeaway-item {
+      border-top: 1px solid var(--line);
+      padding: 0.85rem 0 0;
+      margin-top: 0.85rem;
+    }
+
+    .takeaway-item:first-of-type {
+      border-top: 0;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .takeaway-item strong {
+      color: var(--accent);
+      display: block;
+      font-family: "Google Sans", sans-serif;
+      font-size: 1.55rem;
+      line-height: 1.1;
+    }
+
+    .takeaway-item span {
+      color: var(--muted);
+      display: block;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      margin-top: 0.25rem;
+    }
+
+    .table-stack {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .evidence-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .evidence-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-rows: minmax(220px, auto) auto;
+      overflow: hidden;
+    }
+
+    .evidence-card .image-pad {
+      align-items: center;
+      background: #fbfdfb;
+      display: flex;
+      justify-content: center;
+      min-height: 260px;
+      padding: 1rem;
+    }
+
+    .evidence-card img {
+      display: block;
+      max-height: 270px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .evidence-card .content {
+      border-top: 1px solid var(--line);
+      padding: 0.9rem 1rem 1rem;
+    }
+
+    .evidence-card h3 {
+      font-family: "Google Sans", sans-serif;
+      font-size: 1rem;
+      margin: 0 0 0.45rem;
+    }
+
+    .evidence-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.65rem;
+      margin-top: 1.2rem;
+    }
+
+    .report-browser,
+    .case-browser {
+      display: block;
+    }
+
+    .selector-toolbar {
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      display: flex;
+      gap: 0.75rem;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+    }
+
+    .selector-field {
+      align-items: center;
+      display: flex;
+      flex: 1 1 auto;
+      gap: 0.7rem;
+      min-width: 0;
+    }
+
+    .selector-field label {
+      color: var(--muted);
+      flex: 0 0 auto;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .case-select {
+      appearance: none;
+      background: #f8fbf9;
+      border: 1px solid #cfdcd5;
+      border-radius: 6px;
+      color: var(--ink);
+      font: inherit;
+      min-width: 0;
+      padding: 0.55rem 0.65rem;
+      width: 100%;
+    }
+
+    .selector-nav {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 0.45rem;
+    }
+
+    .selector-nav button,
+    .selector-nav a {
+      align-items: center;
+      background: #fff;
+      border: 1px solid #cfdcd5;
+      border-radius: 6px;
+      color: var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      font: inherit;
+      font-weight: 700;
+      min-height: 2.35rem;
+      padding: 0.45rem 0.68rem;
+      text-decoration: none;
+    }
+
+    .selector-nav button:hover,
+    .selector-nav a:hover {
+      border-color: var(--accent-2);
+      color: var(--accent-2);
+    }
+
+    .report-frame-wrap {
+      overflow: hidden;
+      min-height: 760px;
+    }
+
+    .report-frame {
+      display: block;
+      width: 100%;
+      height: 760px;
+      border: 0;
+      background: #fff;
+    }
+
+    .video-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    .video-card.feature {
+      grid-column: 1 / -1;
+      justify-self: center;
+      max-width: 720px;
+      width: 100%;
+    }
+
+    .video-card {
+      overflow: hidden;
+    }
+
+    .video-card video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #101a16;
+      object-fit: contain;
+    }
+
+    .video-card.feature video {
+      max-height: 405px;
+    }
+
+    .compact-figure {
+      margin: 1.25rem auto 0;
+      max-width: 700px;
+    }
+
+    .compact-figure img {
+      max-height: 420px;
+      object-fit: contain;
+      padding: 0.9rem;
+    }
+
+    .sync-note {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: -0.2rem 0 0.85rem;
+      text-align: right;
+    }
+
+    .video-card .content {
+      padding: 0.75rem 0.9rem;
+    }
+
+    .video-card h3 {
+      text-align: center;
+    }
+
+    .case-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .case-title span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .small-link {
+      color: var(--accent-3);
+      font-weight: 700;
+    }
+
+    .is-coming-soon {
+      opacity: 0.55;
+      cursor: default;
+    }
+
+    .abstract-text {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1.25rem 1.4rem;
+      margin-top: 0.6rem;
+    }
+
+    #bibtex pre {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+
+    .footer {
+      background: var(--soft);
+      border-top: 1px solid var(--line);
+      padding: 2rem 1.5rem;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media screen and (max-width: 960px) {
+      .overview-grid,
+      .figure-grid,
+      .metric-grid,
+      .table-pair,
+      .ablation-layout,
+      .system-layout,
+      .evidence-row,
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .takeaway-panel {
+        position: static;
+      }
+
+      .selector-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .selector-field,
+      .selector-nav {
+        width: 100%;
+      }
+
+      .selector-nav button,
+      .selector-nav a {
+        justify-content: center;
+        flex: 1 1 0;
+      }
+
+      .report-frame,
+      .report-frame-wrap {
+        min-height: 620px;
+        height: 620px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">A Simulation-Grounded Agentic VLM Framework for Wildfire Monitoring and Reporting</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Duowen Chen<sup>1</sup>,</span>
+              <span class="author-block">Yuchen Sun<sup>1</sup>,</span>
+              <span class="author-block">Zhiqi Li<sup>1</sup>,</span>
+              <span class="author-block">Yuxuan Liao<sup>1</sup>,</span>
+              <span class="author-block">Sinan Wang<sup>1</sup>,</span>
+              <span class="author-block">Bart van Bloemen Waanders<sup>2</sup>,</span>
+              <span class="author-block">Bo Zhu<sup>1</sup></span>
+            </div>
+            <div class="is-size-6 publication-authors">
+              <span class="author-block"><sup>1</sup>Georgia Institute of Technology</span>
+              <span class="author-block"><sup>2</sup>Sandia National Laboratories</span>
+            </div>
+            <p class="subtitle is-5">
+              A simulation-grounded video memory system for estimating wildfire status, predicting downstream fire behavior, and producing operational per-case reports.
+            </p>
+            <div class="paper-note">Preprint &middot; Under Review</div>
+
+            <div class="button-row">
+              <a href="static/pdfs/wildfire_vlm.pdf" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+              </a>
+              <!-- TODO: replace with GitHub link, e.g. href="https://github.com/..." and remove the is-coming-soon class -->
+              <a class="external-link button is-normal is-rounded is-dark is-coming-soon" title="Code coming soon">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code (Coming Soon)</span>
+              </a>
+              <a href="#case-videos" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-video"></i></span>
+                <span>Videos</span>
+              </a>
+              <a href="#bibtex" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-quote-right"></i></span>
+                <span>BibTeX</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <figure class="teaser-figure">
+        <img class="hero-image" src="static/images/wildfire_report/teaser.jpg" alt="Overview of the wildfire simulation, video generation, memory retrieval, and reporting pipeline.">
+        <figcaption class="teaser-caption">
+          Overview of the proposed wildfire pipeline: physics-grounded simulation episodes are converted into realistic visual observations, indexed as multimodal memory, retrieved for similar query videos, and used by a multi-agent VLM system to produce state estimates, downstream fire-behavior predictions, and operational reports.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="abstract" style="padding-top: 0;">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <div class="section-kicker">Abstract</div>
+      </div>
+      <div class="content has-text-justified abstract-text">
+        <p>
+          Effective wildfire monitoring requires relating visual evidence to physical fire dynamics, yet real videos with synchronized physical annotations are scarce and high-fidelity 3D simulation is costly. We present a simulation-grounded vision-language model (VLM) framework that automatically converts 2D wildfire simulations into labeled video episodes. A fixed Blender mapping produces low-detail 3D proxies aligned with simulator terrain, fuel layout, fire activity, and wind cues; controllable video generation supplies richer appearance. The proxies are intermediate representations rather than finely rendered final scenes.
+        </p>
+        <p>
+          Generated videos and simulator labels form reusable multimodal memory for a training-free multi-agent VLM system that retrieves reference episodes, reconciles visual and memory-based predictions, and produces structured wildfire reports. On held-out generated episodes, video memory achieves 51.5% exact four-tag accuracy, compared with 22.6% for direct VLM querying and 16&ndash;17% for text-only memory; the complete system achieves 77.3% accuracy on six simulator-derived report fields. Component ablations, cross-generator tests, and three real-UAV evaluations assess retrieval, reporting, generator changes, and observable monitoring tasks. The framework connects automatic simulation-to-proxy conversion with memory-based VLM reasoning under scarce real-world physical annotations.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band" id="overview">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <div class="section-kicker">System Overview</div>
+        <h2 class="title is-3">From Physics Episodes to Operational Reports</h2>
+        <p class="section-lede">
+          The framework keeps the simulator, generated video, memory retrieval, and report writer in one traceable loop: physics creates labeled episodes, video generation makes them readable to VLMs, and memory retrieval gives the agents concrete prior cases.
+        </p>
+      </div>
+      <div class="system-layout">
+        <div class="pipeline-rail">
+          <div class="pipeline-step">
+            <div class="step-index">01</div>
+            <div>
+              <h3>Physics Episode Bank</h3>
+              <p>SimFire produces labeled wildfire trajectories with wind, moisture, slope, vegetation, and downstream fire-behavior targets.</p>
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <div class="step-index">02</div>
+            <div>
+              <h3>2D-to-3D Video Bridge</h3>
+              <p>Procedural proxy rendering converts simulator states into video controls, then the video model synthesizes UAV-style observations.</p>
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <div class="step-index">03</div>
+            <div>
+              <h3>Multimodal Memory Retrieval</h3>
+              <p>Video and text embeddings retrieve similar episodes, and candidate reranking selects the most useful memory evidence.</p>
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <div class="step-index">04</div>
+            <div>
+              <h3>Multi-Agent Report Assembly</h3>
+              <p>Visual, lookup-memory, combined-memory, and judge agents infer state tags, downstream risk labels, and a final readable report.</p>
+            </div>
+          </div>
+        </div>
+        <div class="system-visual">
+          <img src="static/images/wildfire_report/vlm_pic2.png" alt="Memory-assisted multi-agent VLM reporting diagram.">
+        </div>
+      </div>
+      <div class="figure-card" style="margin-top: 1.25rem;">
+        <img src="static/images/wildfire_report/video_cases.jpg" alt="Examples from the wildfire video generation and report pipeline.">
+        <div class="content">
+          <h3>Simulation-Grounded Visual Cases</h3>
+          <p>The generated wildfire clips preserve a link to simulator attributes while presenting realistic video evidence to the VLM agents.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="ablation">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <div class="section-kicker">Ablation Results</div>
+        <h2 class="title is-3">What the Memory and Agent Design Contribute</h2>
+        <p class="section-lede">The ablations separate the value of multimodal memory, agent composition, reranking, and memory-bank size.</p>
+      </div>
+
+      <div class="ablation-layout">
+        <aside class="takeaway-panel">
+          <h3>Key Readouts</h3>
+          <div class="takeaway-item">
+            <strong>77.3%</strong>
+            <span>Full system downstream task accuracy, closest to the oracle upper bound.</span>
+          </div>
+          <div class="takeaway-item">
+            <strong>51.5%</strong>
+            <span>Exact four-tag match with full multimodal memory, far above prompt-only memory.</span>
+          </div>
+          <div class="takeaway-item">
+            <strong>400</strong>
+            <span>Memory size used by the final retrieval setup; larger memory improves tag recovery.</span>
+          </div>
+        </aside>
+
+        <div class="table-stack">
+          <table class="result-table">
+            <caption>Agent Composition</caption>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Downstream Task Accuracy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>No Judge Agent (Majority Vote)</td><td>72.6%</td></tr>
+              <tr><td>No Lookup Memory Agent</td><td>74.3%</td></tr>
+              <tr><td>No Combined Memory Agent</td><td>74.1%</td></tr>
+              <tr><td>No Direct Visual Agent</td><td>73.6%</td></tr>
+              <tr><td>Only Direct Visual Agent</td><td>66.8%</td></tr>
+              <tr><td>Only Combined Memory Agent</td><td>72.2%</td></tr>
+              <tr><td>Only Lookup Memory Agent</td><td>67.8%</td></tr>
+              <tr><td>Full System</td><td class="best">77.3%</td></tr>
+              <tr><td>Oracle Upper Bound</td><td class="oracle">82.3%</td></tr>
+            </tbody>
+          </table>
+
+          <table class="result-table">
+            <caption>Memory Content</caption>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>4-Tags</th>
+                <th>Wind</th>
+                <th>Moist.</th>
+                <th>Slope</th>
+                <th>Veg.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Described-query prompt memory</td><td>16.2%</td><td>62.6%</td><td>51.5%</td><td>65.7%</td><td>68.7%</td></tr>
+              <tr><td>Direct-query prompt memory</td><td>17.2%</td><td>68.7%</td><td>60.6%</td><td>66.7%</td><td>62.6%</td></tr>
+              <tr><td>Full Memory</td><td class="best">51.5%</td><td class="best">74.7%</td><td class="best">83.8%</td><td class="best">82.8%</td><td class="best">89.9%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="evidence-row">
+        <div class="evidence-card">
+          <div class="image-pad">
+            <img src="static/images/wildfire_report/increase_size.png" alt="Retrieval accuracy increases with memory size.">
+          </div>
+          <div class="content">
+            <h3>Memory Growth</h3>
+            <p>Expanding memory from 100 to 400 episodes improves exact and per-tag retrieval accuracy.</p>
+          </div>
+        </div>
+        <div class="evidence-card">
+          <div class="image-pad">
+            <img src="static/images/wildfire_report/figure_02_tag_top1_rates.png" alt="Embedding-model ablation for tag retrieval top-1 rates.">
+          </div>
+          <div class="content">
+            <h3>Embedding Model Choice</h3>
+            <p>Qwen3-VL embedding is selected for the final memory system after comparing candidate multimodal embedders.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band" id="validation">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <div class="section-kicker">Validation Results</div>
+        <h2 class="title is-3">Retrieval Accuracy and Downstream Fire Behavior</h2>
+      </div>
+
+      <table class="result-table">
+        <caption>Tag Prediction Accuracy: Direct VLM Querying vs. Memory Retrieval</caption>
+        <thead>
+          <tr>
+            <th>Criterion</th>
+            <th>Gemini 2.5</th>
+            <th>Claude 4</th>
+            <th>GPT-5</th>
+            <th>GPT-4.1</th>
+            <th>Memory w/o Rerank</th>
+            <th>Memory w/ GPT-5 Rerank</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>All Tags</td><td>22.6%</td><td>22.2%</td><td>21.2%</td><td>16.2%</td><td>45.5%</td><td class="best">51.5%</td></tr>
+          <tr><td>Three Tags</td><td>56.6%</td><td>63.4%</td><td>63.6%</td><td>49.5%</td><td>78.8%</td><td class="best">82.8%</td></tr>
+          <tr><td>Two Tags</td><td>90.9%</td><td>91.4%</td><td>90.9%</td><td>85.9%</td><td>94.9%</td><td class="best">99.0%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="figure-grid" style="margin-top: 1.25rem;">
+        <div class="figure-card">
+          <img src="static/images/wildfire_report/figure_01_exact_match_comparison.png" alt="Exact four-tag match comparison across methods.">
+          <div class="content">
+            <h3>Exact Four-Tag Match</h3>
+            <p>Memory retrieval with reranking substantially improves full-state recovery over direct VLM querying.</p>
+          </div>
+        </div>
+        <div class="figure-card">
+          <img src="static/images/wildfire_report/figure_02_per_tag_accuracy.png" alt="Per-tag prediction accuracy comparison.">
+          <div class="content">
+            <h3>Per-Tag Accuracy</h3>
+            <p>The retrieval pipeline improves most state dimensions, especially moisture, slope, and vegetation.</p>
+          </div>
+        </div>
+      </div>
+
+      <table class="result-table" style="margin-top: 1.25rem;">
+        <caption>Downstream Wildfire Task Accuracy Comparison. Higher is better; bold and underlined values denote best and second-best performance.</caption>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Direct Query GPT</th>
+            <th>Multi-Agent + Combined Memory</th>
+            <th>ForestFireVLM</th>
+            <th>Qwen2-Wildfire-2B</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Fast Spread Risk</td><td class="second-best">55.7%</td><td class="best">75.3%</td><td>58.8%</td><td>43.3%</td></tr>
+          <tr><td>High Peak Burning Area</td><td class="second-best">63.9%</td><td class="best">77.3%</td><td>54.6%</td><td>59.8%</td></tr>
+          <tr><td>High Final Burnscar</td><td class="second-best">64.9%</td><td class="best">80.4%</td><td>55.7%</td><td>60.8%</td></tr>
+          <tr><td>High Canopy Cover</td><td>57.7%</td><td class="best">73.2%</td><td class="second-best">67.0%</td><td>47.4%</td></tr>
+          <tr><td>Rapid Growth + Large Burn</td><td class="second-best">64.9%</td><td class="best">79.4%</td><td>55.7%</td><td>60.8%</td></tr>
+          <tr><td>Severe Fire Behavior</td><td class="second-best">66.0%</td><td class="best">78.4%</td><td>56.7%</td><td>59.8%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="figure-card compact-figure">
+        <img src="static/images/wildfire_report/downstream.png" alt="Downstream wildfire task accuracy chart.">
+        <div class="content">
+          <h3>Downstream Task Summary</h3>
+          <p>The combined memory-assisted multi-agent system achieves the strongest accuracy across all six downstream wildfire behavior tasks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="reports">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <div class="section-kicker">HTML Reports</div>
+        <h2 class="title is-3">Browse Generated Operational Reports</h2>
+      </div>
+      <div class="report-browser">
+        <div class="selector-toolbar">
+          <div class="selector-field">
+            <label for="reportSelect">Report</label>
+            <select class="case-select" id="reportSelect" aria-label="Select report case"></select>
+          </div>
+          <div class="selector-nav">
+            <button type="button" id="prevReport">Prev</button>
+            <button type="button" id="nextReport">Next</button>
+            <a id="openReport" href="per_sample_reports/case_001.html" target="_blank">Open</a>
+          </div>
+        </div>
+        <div class="report-frame-wrap">
+          <iframe id="reportFrame" class="report-frame" title="Per-sample wildfire report" src="per_sample_reports/case_001.html"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band" id="case-videos">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <div class="section-kicker">Video Cases</div>
+        <h2 class="title is-3">100 Video Cases</h2>
+      </div>
+      <div class="case-browser">
+        <div class="selector-toolbar">
+          <div class="selector-field">
+            <label for="caseSelect">Video Case</label>
+            <select class="case-select" id="caseSelect" aria-label="Select video case"></select>
+          </div>
+          <div class="selector-nav">
+            <button type="button" id="prevCase">Prev</button>
+            <button type="button" id="nextCase">Next</button>
+          </div>
+        </div>
+        <div>
+          <div class="case-title">
+            <h3 class="title is-5" id="caseHeading">Case 1</h3>
+            <span>generated / rendered / sim2d</span>
+          </div>
+          <p class="sync-note">Playback is synchronized across all three videos. Videos are compressed for the web.</p>
+          <div class="video-grid">
+            <div class="video-card feature">
+              <div class="content"><h3>Generated Video</h3></div>
+              <video id="generatedVideo" controls playsinline preload="metadata"></video>
+            </div>
+            <div class="video-card">
+              <div class="content"><h3>Rendered Proxy</h3></div>
+              <video id="renderedVideo" controls playsinline preload="metadata"></video>
+            </div>
+            <div class="video-card">
+              <div class="content"><h3>2D Simulation</h3></div>
+              <video id="sim2dVideo" controls playsinline preload="metadata"></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="bibtex">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3">BibTeX</h2>
+      <pre><code>@misc{chen2026wildfire,
+  title  = {A Simulation-Grounded Agentic VLM Framework for Wildfire Monitoring and Reporting},
+  author = {Chen, Duowen and Sun, Yuchen and Li, Zhiqi and Liao, Yuxuan and Wang, Sinan and van Bloemen Waanders, Bart and Zhu, Bo},
+  year   = {2026},
+  note   = {Preprint}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-note">
+        <a href="../../">Duowen Chen</a> &middot; Page template adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const reports = Array.from({ length: 50 }, (_, index) => {
+      const id = String(index + 1).padStart(3, "0");
+      return { label: `Case ${id}`, path: `per_sample_reports/case_${id}.html` };
+    });
+
+    const selectedCases = Array.from({ length: 100 }, (_, index) => `Case ${index + 1}`);
+
+    function setCaseVideos(caseName) {
+      const encodedCase = encodeURIComponent(caseName);
+      const basePath = `selected_sample_cases/${encodedCase}`;
+      pauseAllVideos();
+      document.getElementById("caseHeading").textContent = caseName;
+      document.getElementById("generatedVideo").src = `${basePath}/generated.mp4`;
+      document.getElementById("renderedVideo").src = `${basePath}/rendered.mp4`;
+      document.getElementById("sim2dVideo").src = `${basePath}/sim2d.mp4`;
+    }
+
+    const videoIds = ["generatedVideo", "renderedVideo", "sim2dVideo"];
+    let syncingVideos = false;
+
+    function getVideos() {
+      return videoIds.map((id) => document.getElementById(id));
+    }
+
+    function pauseAllVideos() {
+      getVideos().forEach((video) => video.pause());
+    }
+
+    function syncTo(source, options = {}) {
+      if (syncingVideos) {
+        return;
+      }
+      syncingVideos = true;
+      getVideos().forEach((video) => {
+        if (video === source) {
+          return;
+        }
+        video.playbackRate = source.playbackRate;
+        if (Number.isFinite(source.currentTime) && Math.abs(video.currentTime - source.currentTime) > 0.08) {
+          video.currentTime = source.currentTime;
+        }
+        if (options.play && video.paused) {
+          video.play().catch(() => {});
+        }
+        if (options.pause && !video.paused) {
+          video.pause();
+        }
+      });
+      syncingVideos = false;
+    }
+
+    function attachSynchronizedPlayback() {
+      getVideos().forEach((video) => {
+        video.addEventListener("play", () => syncTo(video, { play: true }));
+        video.addEventListener("pause", () => syncTo(video, { pause: true }));
+        video.addEventListener("seeking", () => syncTo(video));
+        video.addEventListener("ratechange", () => syncTo(video));
+      });
+    }
+
+    function buildSelector(selectId, items, getLabel) {
+      const select = document.getElementById(selectId);
+      items.forEach((item, index) => {
+        const option = document.createElement("option");
+        option.value = String(index);
+        option.textContent = getLabel(item);
+        select.appendChild(option);
+      });
+      return select;
+    }
+
+    function stepSelect(select, items, delta, onSelect) {
+      const nextIndex = Math.min(items.length - 1, Math.max(0, Number(select.value) + delta));
+      select.value = String(nextIndex);
+      onSelect(items[nextIndex]);
+    }
+
+    function setReport(report) {
+      document.getElementById("reportFrame").src = report.path;
+      document.getElementById("openReport").href = report.path;
+    }
+
+    const reportSelect = buildSelector("reportSelect", reports, (report) => report.label);
+    reportSelect.addEventListener("change", () => setReport(reports[Number(reportSelect.value)]));
+    document.getElementById("prevReport").addEventListener("click", () => stepSelect(reportSelect, reports, -1, setReport));
+    document.getElementById("nextReport").addEventListener("click", () => stepSelect(reportSelect, reports, 1, setReport));
+
+    const caseSelect = buildSelector("caseSelect", selectedCases, (caseName) => caseName);
+    caseSelect.addEventListener("change", () => setCaseVideos(selectedCases[Number(caseSelect.value)]));
+    document.getElementById("prevCase").addEventListener("click", () => stepSelect(caseSelect, selectedCases, -1, setCaseVideos));
+    document.getElementById("nextCase").addEventListener("click", () => stepSelect(caseSelect, selectedCases, 1, setCaseVideos));
+
+    setReport(reports[0]);
+    setCaseVideos(selectedCases[0]);
+    attachSynchronizedPlayback();
+  </script>
+</body>
+</html>

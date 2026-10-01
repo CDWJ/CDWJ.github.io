@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wildfire Operational Report · Case 045</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --panel: #fffdf8;
+      --warm: #f7efe2;
+      --warm-2: #f2e4cf;
+      --ink: #304055;
+      --muted: #63748a;
+      --line: #d8d2c6;
+      --blue: #315f97;
+      --teal: #2c7a78;
+      --amber: #a77719;
+      --red: #cc5b37;
+      --shadow: 0 16px 40px rgba(32, 41, 52, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+    .page {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+    .hero {
+      background: linear-gradient(180deg, #fffdf9, #fbf6ec);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px 30px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(49, 95, 151, 0.08);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 36px;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      margin: 12px 0 0;
+      max-width: 980px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .summary-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px 18px;
+      min-height: 102px;
+    }
+    .summary-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .summary-value {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .summary-sub {
+      margin-top: 8px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .sidebar {
+      position: sticky;
+      top: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .sidebar h2 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+    .sidebar p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .search {
+      width: 100%;
+      padding: 12px 13px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+    .case-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 72vh;
+      overflow: auto;
+      padding-right: 4px;
+    }
+    .case-button {
+      width: 100%;
+      text-align: left;
+      border: 1px solid transparent;
+      background: transparent;
+      border-radius: 14px;
+      padding: 12px 13px;
+      cursor: pointer;
+      transition: 140ms ease;
+    }
+    .case-button:hover {
+      background: rgba(49, 95, 151, 0.06);
+      border-color: rgba(49, 95, 151, 0.16);
+    }
+    .case-button.active {
+      background: rgba(204, 91, 55, 0.10);
+      border-color: rgba(204, 91, 55, 0.26);
+    }
+    .case-name {
+      display: block;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .case-meta {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 22px 24px;
+    }
+    .panel h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+    .panel h3 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .case-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+    .case-title {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: -0.02em;
+    }
+    .case-subtitle {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .pill.critical {
+      background: rgba(204, 91, 55, 0.14);
+      color: var(--red);
+    }
+    .pill.high {
+      background: rgba(167, 119, 25, 0.14);
+      color: var(--amber);
+    }
+    .pill.moderate, .pill.low {
+      background: rgba(44, 122, 120, 0.12);
+      color: var(--teal);
+    }
+    .top-row {
+      display: grid;
+      grid-template-columns: 1fr 264px;
+      gap: 20px;
+      align-items: start;
+    }
+    .state-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .state-card {
+      background: var(--warm);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 16px;
+    }
+    .state-label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .state-value {
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .state-sub {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .video-box {
+      background: #111822;
+      border-radius: 18px;
+      padding: 10px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+    }
+    .video-box h3 {
+      margin: 0 0 8px;
+      color: #dbe5f2;
+    }
+    .case-video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      background: #0c1118;
+    }
+    .text-card {
+      background: var(--warm);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px 18px 19px;
+    }
+    .text-card + .text-card {
+      margin-top: 16px;
+    }
+    .text-card p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.68;
+      color: var(--ink);
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+      margin-bottom: 18px;
+    }
+    .location-card {
+      background: var(--warm-2);
+    }
+    .coord-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .coord-item {
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(216, 210, 198, 0.92);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+    .coord-item .label {
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .coord-item .value {
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .map-frame {
+      margin-top: 16px;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(216, 210, 198, 0.92);
+      border-radius: 18px;
+      padding: 8px;
+      min-height: 262px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3);
+    }
+    .map-frame iframe {
+      display: block;
+      width: 100%;
+      height: 244px;
+      border: 0;
+      border-radius: 12px;
+      background: #f3efe7;
+    }
+    .map-actions {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .small-note {
+      margin-top: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .single-case .layout {
+      grid-template-columns: 1fr;
+    }
+    .single-case .sidebar {
+      display: none;
+    }
+    @media (max-width: 1220px) {
+      .summary-grid,
+      .state-row,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div class="eyebrow">Wildfire Report</div>
+      <h1>Wildfire Operational Report · Case 045</h1>
+      <p>
+        This report is the final stage of the downstream pipeline. It uses the downstream task predictions
+        together with a four-tag latent state estimate to produce a compact wildfire scenario report.
+      </p>
+      <div class="summary-grid" id="summary-grid"></div>
+    </section>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <h2>Cases</h2>
+        <p>Select a case to view the final wildfire report.</p>
+        <input id="search" class="search" type="text" placeholder="Search case">
+        <div id="case-list" class="case-list"></div>
+      </aside>
+
+      <main class="content">
+        <section class="panel">
+          <div class="case-head">
+            <div>
+              <div class="eyebrow" id="case-eyebrow">Scenario</div>
+              <h2 id="case-title" class="case-title"></h2>
+              <div id="case-subtitle" class="case-subtitle"></div>
+            </div>
+            <div id="severity-pill" class="pill"></div>
+          </div>
+
+          <div class="top-row">
+            <div id="state-row" class="state-row"></div>
+            <div class="video-box">
+              <h3>Scenario Video</h3>
+              <video id="case-video" class="case-video" controls preload="metadata" playsinline></video>
+
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Narrative Report</h2>
+          <div id="latent-card" class="text-card"></div>
+          <div id="spread-card" class="text-card"></div>
+          <div class="two-col">
+            <div id="damage-card" class="text-card"></div>
+            <div id="location-card" class="text-card location-card"></div>
+          </div>
+          <div id="suggestion-card" class="text-card"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const DATA = {"summary": {"cards": [{"label": "Case ID", "value": "Case 045", "sub": "Operational report identifier"}, {"label": "Predicted Severity", "value": "Critical", "sub": "6 of 6 downstream tasks predicted positive"}, {"label": "Location", "value": "-118.7677°, 41.8121°", "sub": "Longitude, Latitude"}, {"label": "Wind / Moisture", "value": "Low Wind · Low Moisture", "sub": "Memory-backed latent state estimate"}, {"label": "Terrain / Vegetation", "value": "Low Slope · High Vegetation", "sub": "Memory-backed latent state estimate"}], "map_points": [{"case_slug": "case_045", "case_label": "Case 045", "latitude": 41.812096295, "longitude": -118.767715995}], "map_bounds": {"min_lat": 41.812096295, "max_lat": 41.812096295, "min_lon": -118.767715995, "max_lon": -118.767715995}}, "queries": [{"case_slug": "case_045", "case_label": "Case 045", "latitude": 41.812096295, "longitude": -118.767715995, "video_asset_path": "../report_assets/videos/case_045.mp4", "video_href": "../report_assets/videos/case_045.mp4", "standalone_report_path": "case_045.html", "standalone_report_href": "", "severity_label": "Critical", "severity_score": 6, "consensus_tags": {"Wind": {"label": "Low Wind", "raw_label": "low_wind", "confidence": 0.6688}, "Moisture": {"label": "Low Moisture", "raw_label": "low_moisture", "confidence": 1.0}, "Terrain": {"label": "Low Slope", "raw_label": "low_slope", "confidence": 1.0}, "Vegetation": {"label": "High Vegetation", "raw_label": "high_vegetation", "confidence": 1.0}}, "narratives": {"state": "The memory-backed latent state estimate suggests lighter wind forcing with less directional push, drier and more receptive fuels, flatter or more gently rolling terrain, and denser fuels and higher canopy structure. This four-tag state acts as the structural prior for the downstream interpretation shown below.", "spread": "The wildfire is expected to spread rapidly due to high vegetation density combined with low wind and low slope terrain, facilitating fast to very fast fire propagation. The conditions promote rapid growth and expansion, increasing the risk of extensive burn areas within a short timeframe.", "damage": "Significant damage is anticipated with a high peak burning area and extensive final burn scars. The presence of high canopy cover and severe fire behavior further exacerbates the potential for widespread destruction and long-term ecological impact.", "location": "The underlying source scene is centered near longitude -118.767716° and latitude 41.812096°.", "recommendation": "Immediate deployment of firefighting resources is critical to contain the fire's rapid spread. Prioritize protective measures for vulnerable areas with dense vegetation and high canopy cover, and consider aerial support to manage severe fire behavior effectively."}, "tasks": [{"label": "Fast Spread Risk", "prediction_text": "Fast / Very Fast", "positive": true}, {"label": "High Peak Burning Area", "prediction_text": "High", "positive": true}, {"label": "High Final Burnscar", "prediction_text": "High", "positive": true}, {"label": "High Canopy Cover", "prediction_text": "High", "positive": true}, {"label": "Rapid Growth + Large Burn", "prediction_text": "High", "positive": true}, {"label": "Severe Fire Behavior", "prediction_text": "High", "positive": true}]}]};
+
+    const summaryGrid = document.getElementById('summary-grid');
+    const searchInput = document.getElementById('search');
+    const caseList = document.getElementById('case-list');
+    const caseEyebrow = document.getElementById('case-eyebrow');
+    const caseTitle = document.getElementById('case-title');
+    const caseSubtitle = document.getElementById('case-subtitle');
+    const severityPill = document.getElementById('severity-pill');
+    const caseVideo = document.getElementById('case-video');
+    const stateRow = document.getElementById('state-row');
+    const latentCard = document.getElementById('latent-card');
+    const spreadCard = document.getElementById('spread-card');
+    const damageCard = document.getElementById('damage-card');
+    const locationCard = document.getElementById('location-card');
+    const suggestionCard = document.getElementById('suggestion-card');
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function severityClass(label) {
+      if (label === 'Critical') return 'critical';
+      if (label === 'High') return 'high';
+      if (label === 'Moderate') return 'moderate';
+      return 'low';
+    }
+
+    function renderSummary() {
+      const cards = DATA.summary.cards || [];
+      summaryGrid.innerHTML = '';
+      cards.forEach(card => {
+        const div = document.createElement('div');
+        div.className = 'summary-card';
+        div.innerHTML = `
+          <div class="summary-label">${escapeHtml(card.label)}</div>
+          <div class="summary-value">${escapeHtml(card.value)}</div>
+          <div class="summary-sub">${escapeHtml(card.sub)}</div>
+        `;
+        summaryGrid.appendChild(div);
+      });
+    }
+
+    function renderCaseButtons(filterText = '') {
+      const query = filterText.trim().toLowerCase();
+      caseList.innerHTML = '';
+      DATA.queries
+        .filter(item => item.case_label.toLowerCase().includes(query))
+        .forEach((item, index) => {
+          const button = document.createElement('button');
+          button.className = 'case-button';
+          button.dataset.caseSlug = item.case_slug;
+          button.innerHTML = `
+            <span class="case-name">${escapeHtml(item.case_label)}</span>
+            <span class="case-meta">${escapeHtml(item.severity_label)} severity · ${item.tasks.filter(task => task.positive).length} positive indicators</span>
+          `;
+          button.addEventListener('click', () => selectCase(item.case_slug));
+          if (index === 0 && !document.querySelector('.case-button.active')) {
+            button.classList.add('active');
+          }
+          caseList.appendChild(button);
+        });
+    }
+
+    function renderStateCards(item) {
+      stateRow.innerHTML = '';
+      Object.entries(item.consensus_tags).forEach(([field, payload]) => {
+        const card = document.createElement('div');
+        card.className = 'state-card';
+        card.innerHTML = `
+          <div class="state-label">${escapeHtml(field)}</div>
+          <div class="state-value">${escapeHtml(payload.label)}</div>
+          <div class="state-sub">latent-state confidence ${(payload.confidence * 100).toFixed(1)}%</div>
+        `;
+        stateRow.appendChild(card);
+      });
+    }
+
+    function buildMapEmbed(current) {
+      if (current.longitude == null || current.latitude == null) {
+        return '<div class="small-note">Map unavailable for this case.</div>';
+      }
+      const lon = Number(current.longitude);
+      const lat = Number(current.latitude);
+      const lonDelta = 0.18;
+      const latDelta = 0.12;
+      const left = (lon - lonDelta).toFixed(6);
+      const right = (lon + lonDelta).toFixed(6);
+      const bottom = (lat - latDelta).toFixed(6);
+      const top = (lat + latDelta).toFixed(6);
+      const marker = `${lat.toFixed(6)},${lon.toFixed(6)}`;
+      const bbox = `${left},${bottom},${right},${top}`;
+      const embedUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${marker}`;
+      const viewUrl = `https://www.openstreetmap.org/?mlat=${lat.toFixed(6)}&mlon=${lon.toFixed(6)}#map=9/${lat.toFixed(6)}/${lon.toFixed(6)}`;
+      return `
+        <iframe
+          title="OpenStreetMap location"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="${embedUrl}">
+        </iframe>
+        <div class="map-actions">
+          <span class="small-note" style="margin-top:0;">OpenStreetMap live view centered on this location.</span>
+          <a href="${viewUrl}" target="_blank" rel="noopener noreferrer">Open larger map</a>
+        </div>
+      `;
+    }
+
+    function selectCase(caseSlug) {
+      document.querySelectorAll('.case-button').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.caseSlug === caseSlug);
+      });
+      const item = DATA.queries.find(query => query.case_slug === caseSlug);
+      if (!item) return;
+
+      caseEyebrow.textContent = 'Wildfire Report';
+      caseTitle.textContent = item.case_label;
+      const standaloneLink = item.standalone_report_href ? ` · <a href="${escapeHtml(item.standalone_report_href)}">open standalone HTML</a>` : '';
+      caseSubtitle.innerHTML = `Final operational wildfire scenario report${standaloneLink}`;
+      severityPill.className = `pill ${severityClass(item.severity_label)}`;
+      severityPill.textContent = `${item.severity_label} Severity`;
+      caseVideo.src = item.video_href;
+      caseVideo.load();
+
+      renderStateCards(item);
+
+      latentCard.innerHTML = `<h3>Latent State</h3><p>${escapeHtml(item.narratives.state)}</p>`;
+      spreadCard.innerHTML = `<h3>Fire Spread Prediction</h3><p>${escapeHtml(item.narratives.spread)}</p>`;
+      damageCard.innerHTML = `<h3>Damage Outlook</h3><p>${escapeHtml(item.narratives.damage)}</p>`;
+
+      const lonText = item.longitude == null ? 'Unavailable' : `${item.longitude.toFixed(6)}°`;
+      const latText = item.latitude == null ? 'Unavailable' : `${item.latitude.toFixed(6)}°`;
+      locationCard.innerHTML = `
+        <h3>Location</h3>
+        <p>${escapeHtml(item.narratives.location)}</p>
+        <div class="coord-grid">
+          <div class="coord-item">
+            <span class="label">Longitude</span>
+            <span class="value">${escapeHtml(lonText)}</span>
+          </div>
+          <div class="coord-item">
+            <span class="label">Latitude</span>
+            <span class="value">${escapeHtml(latText)}</span>
+          </div>
+        </div>
+        <div class="map-frame">${buildMapEmbed(item)}</div>
+      `;
+      suggestionCard.innerHTML = `<h3>Operational Suggestion</h3><p>${escapeHtml(item.narratives.recommendation)}</p>`;
+    }
+
+    if (DATA.queries.length === 1) {
+      document.body.classList.add('single-case');
+    }
+
+    renderSummary();
+    renderCaseButtons();
+    if (DATA.queries.length > 0) {
+      selectCase(DATA.queries[0].case_slug);
+    }
+
+    searchInput?.addEventListener('input', (event) => {
+      const previous = document.querySelector('.case-button.active')?.dataset.caseSlug;
+      renderCaseButtons(event.target.value);
+      const buttons = Array.from(document.querySelectorAll('.case-button'));
+      const next = buttons.find(button => button.dataset.caseSlug === previous) || buttons[0];
+      if (next) {
+        selectCase(next.dataset.caseSlug);
+      }
+    });
+  </script>
+</body>
+</html>
