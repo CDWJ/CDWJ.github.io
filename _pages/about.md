@@ -81,7 +81,7 @@ Here is my [CV](../files/duowenchen_2026.pdf).
         <b>A Simulation-Grounded Agentic VLM Framework for Wildfire Monitoring and Reporting</b><br />
         <i>Preprint (Under Review)</i><br />
         <b>Duowen Chen</b>, Yuchen Sun, Zhiqi Li, Yuxuan Liao, Sinan Wang, Bart van Bloemen Waanders, Bo Zhu<br />
-        <a nonsmooth="1" href="../projects/wildfire-vlm/static/pdfs/wildfire_vlm.pdf" class="">Paper</a>
+        <a nonsmooth="1" href="https://arxiv.org/abs/2610.02451" class="">Paper</a>
         <a nonsmooth="1" href="../projects/wildfire-vlm/index.html" class="">Project Page</a>
       </div>
     </div>
