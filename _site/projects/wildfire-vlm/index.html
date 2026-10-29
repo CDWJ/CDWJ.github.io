@@ -633,6 +633,74 @@
       font-size: 0.95rem;
     }
 
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .featured-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .featured-head {
+      padding: 0.55rem 0.85rem;
+    }
+
+    .featured-head h3 {
+      font-family: "Google Sans", sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .featured-card video {
+      display: block;
+      width: 100%;
+      background: #101a16;
+    }
+
+    .featured-card .feat-main {
+      aspect-ratio: 560 / 324;
+      object-fit: cover;
+    }
+
+    .featured-aux {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      padding: 4px;
+      background: #fff;
+    }
+
+    .featured-aux figure {
+      margin: 0;
+    }
+
+    .featured-aux video {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .featured-aux figcaption {
+      color: var(--muted);
+      font-size: 0.78rem;
+      padding: 0.25rem 0 0.15rem;
+      text-align: center;
+    }
+
+    @media screen and (max-width: 960px) {
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media screen and (max-width: 960px) {
       .overview-grid,
       .figure-grid,
@@ -708,7 +776,7 @@
                 <span class="icon"><i class="fab fa-github"></i></span>
                 <span>Code (Coming Soon)</span>
               </a>
-              <a href="#case-videos" class="external-link button is-normal is-rounded is-dark">
+              <a href="#featured-cases" class="external-link button is-normal is-rounded is-dark">
                 <span class="icon"><i class="fas fa-video"></i></span>
                 <span>Videos</span>
               </a>
@@ -995,11 +1063,103 @@
     </div>
   </section>
 
-  <section class="section section-band" id="case-videos">
+  <section class="section section-band" id="featured-cases">
     <div class="container is-max-desktop">
       <div class="has-text-centered">
-        <div class="section-kicker">Video Cases</div>
-        <h2 class="title is-3">100 Video Cases</h2>
+        <div class="section-kicker">Featured Cases</div>
+        <h2 class="title is-3">From Simulation to Generated Video</h2>
+        <p class="section-lede">Ten representative cases. Each shows the generated video together with the rendered 3D proxy and the 2D simulation it was produced from, played in sync. Videos are compressed for the web.</p>
+      </div>
+      <div class="featured-grid">
+        <div class="featured-card">
+          <div class="featured-head"><h3>Case 16</h3></div>
+          <video class="feat-main" muted loop playsinline preload="none" data-src="selected_sample_cases/Case%2016/generated.mp4"></video>
+          <div class="featured-aux">
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2016/rendered.mp4"></video><figcaption>Rendered Proxy</figcaption></figure>
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2016/sim2d.mp4"></video><figcaption>2D Simulation</figcaption></figure>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-head"><h3>Case 19</h3></div>
+          <video class="feat-main" muted loop playsinline preload="none" data-src="selected_sample_cases/Case%2019/generated.mp4"></video>
+          <div class="featured-aux">
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2019/rendered.mp4"></video><figcaption>Rendered Proxy</figcaption></figure>
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2019/sim2d.mp4"></video><figcaption>2D Simulation</figcaption></figure>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-head"><h3>Case 21</h3></div>
+          <video class="feat-main" muted loop playsinline preload="none" data-src="selected_sample_cases/Case%2021/generated.mp4"></video>
+          <div class="featured-aux">
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2021/rendered.mp4"></video><figcaption>Rendered Proxy</figcaption></figure>
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2021/sim2d.mp4"></video><figcaption>2D Simulation</figcaption></figure>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-head"><h3>Case 31</h3></div>
+          <video class="feat-main" muted loop playsinline preload="none" data-src="selected_sample_cases/Case%2031/generated.mp4"></video>
+          <div class="featured-aux">
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2031/rendered.mp4"></video><figcaption>Rendered Proxy</figcaption></figure>
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2031/sim2d.mp4"></video><figcaption>2D Simulation</figcaption></figure>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-head"><h3>Case 37</h3></div>
+          <video class="feat-main" muted loop playsinline preload="none" data-src="selected_sample_cases/Case%2037/generated.mp4"></video>
+          <div class="featured-aux">
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2037/rendered.mp4"></video><figcaption>Rendered Proxy</figcaption></figure>
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2037/sim2d.mp4"></video><figcaption>2D Simulation</figcaption></figure>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-head"><h3>Case 59</h3></div>
+          <video class="feat-main" muted loop playsinline preload="none" data-src="selected_sample_cases/Case%2059/generated.mp4"></video>
+          <div class="featured-aux">
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2059/rendered.mp4"></video><figcaption>Rendered Proxy</figcaption></figure>
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2059/sim2d.mp4"></video><figcaption>2D Simulation</figcaption></figure>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-head"><h3>Case 62</h3></div>
+          <video class="feat-main" muted loop playsinline preload="none" data-src="selected_sample_cases/Case%2062/generated.mp4"></video>
+          <div class="featured-aux">
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2062/rendered.mp4"></video><figcaption>Rendered Proxy</figcaption></figure>
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2062/sim2d.mp4"></video><figcaption>2D Simulation</figcaption></figure>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-head"><h3>Case 66</h3></div>
+          <video class="feat-main" muted loop playsinline preload="none" data-src="selected_sample_cases/Case%2066/generated.mp4"></video>
+          <div class="featured-aux">
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2066/rendered.mp4"></video><figcaption>Rendered Proxy</figcaption></figure>
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2066/sim2d.mp4"></video><figcaption>2D Simulation</figcaption></figure>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-head"><h3>Case 82</h3></div>
+          <video class="feat-main" muted loop playsinline preload="none" data-src="selected_sample_cases/Case%2082/generated.mp4"></video>
+          <div class="featured-aux">
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2082/rendered.mp4"></video><figcaption>Rendered Proxy</figcaption></figure>
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2082/sim2d.mp4"></video><figcaption>2D Simulation</figcaption></figure>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-head"><h3>Case 95</h3></div>
+          <video class="feat-main" muted loop playsinline preload="none" data-src="selected_sample_cases/Case%2095/generated.mp4"></video>
+          <div class="featured-aux">
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2095/rendered.mp4"></video><figcaption>Rendered Proxy</figcaption></figure>
+            <figure><video muted playsinline preload="none" data-src="selected_sample_cases/Case%2095/sim2d.mp4"></video><figcaption>2D Simulation</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="case-videos">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <div class="section-kicker">All Video Cases</div>
+        <h2 class="title is-3">Browse All 100 Cases</h2>
       </div>
       <div class="case-browser">
         <div class="selector-toolbar">
@@ -1154,6 +1314,36 @@
     setReport(reports[0]);
     setCaseVideos(selectedCases[0]);
     attachSynchronizedPlayback();
+    // Featured cases: load and play only while visible; keep proxy and sim in step with the generated video.
+    document.querySelectorAll(".featured-card").forEach((card) => {
+      const videos = Array.from(card.querySelectorAll("video"));
+      const main = card.querySelector(".feat-main");
+      const aux = videos.filter((v) => v !== main);
+      let lastTime = 0;
+      main.addEventListener("timeupdate", () => {
+        const t = main.currentTime;
+        aux.forEach((v) => {
+          if (t < lastTime || Math.abs(v.currentTime - t) > 0.25) {
+            v.currentTime = Math.min(t, (v.duration || t) - 0.05);
+          }
+          if (v.paused && !main.paused) v.play().catch(() => {});
+        });
+        lastTime = t;
+      });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            videos.forEach((v) => {
+              if (!v.src) { v.src = v.dataset.src; }
+            });
+            videos.forEach((v) => v.play().catch(() => {}));
+          } else {
+            videos.forEach((v) => v.pause());
+          }
+        });
+      }, { threshold: 0.25 });
+      observer.observe(card);
+    });
   </script>
 </body>
 </html>
