@@ -71,7 +71,6 @@ redirect_from:
       cursor: pointer;
     }
     .pub-filter button.active { color: #fff; background: #2a7ae2; }
-    .pub-filter-note { font-size: 13px; color: #777; margin-left: 4px; }
     .pubContainer.show-selected .paper-entry:not(.selected) { display: none; }
 </style>
 
@@ -88,7 +87,6 @@ Here is my [CV](../files/duowenchen_2026.pdf).
 <div class="pub-filter" role="group" aria-label="Filter publications">
   <button type="button" data-filter="selected" class="active">Selected</button>
   <button type="button" data-filter="all">All</button>
-  <span class="pub-filter-note">Selected: first or co-first author</span>
 </div>
 
 <p>
