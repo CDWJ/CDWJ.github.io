@@ -59,6 +59,20 @@ redirect_from:
       transition: background-color 0.15s ease;
     }
     .paperinfo a:hover { background: #1a5bb8; }
+    .pub-filter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0 4px; }
+    .pub-filter button {
+      padding: 4px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #2a7ae2;
+      background: #fff;
+      border: 1px solid #2a7ae2;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .pub-filter button.active { color: #fff; background: #2a7ae2; }
+    .pub-filter-note { font-size: 13px; color: #777; margin-left: 4px; }
+    .pubContainer.show-selected .paper-entry:not(.selected) { display: none; }
 </style>
 
 I'm a final year PhD student at Georgia Tech studying Computer Science. Currently, I'm luckily advised by Prof. [Bo Zhu](https://faculty.cc.gatech.edu/~bozhu/). Previsouly, I was fortune to working with Prof. [Changxi Zheng](http://www.cs.columbia.edu/~cxz/) and [Ziwei Zhu](https://2iw31zhv.github.io/) at Columbia University during my Master's Degree and Prof. [Adriana Schulz](https://homes.cs.washington.edu/~adriana/) and [Ben Jones](https://homes.cs.washington.edu/~benjones/) at GRAIL during my undergrad at Paul G. Allen School at University of Washington.
@@ -71,9 +85,15 @@ Here is my [CV](../files/duowenchen_2026.pdf).
 
 ## Publications
 
+<div class="pub-filter" role="group" aria-label="Filter publications">
+  <button type="button" data-filter="selected" class="active">Selected</button>
+  <button type="button" data-filter="all">All</button>
+  <span class="pub-filter-note">Selected: first or co-first author</span>
+</div>
+
 <p>
   <div class='pubContainer'>
-    <div class='paper-entry'>
+    <div class='paper-entry selected'>
       <div>
         <img class="paperimg" src="../images/wildfire_vlm.jpg" alt="wildfire vlm" />
       </div>
@@ -86,7 +106,7 @@ Here is my [CV](../files/duowenchen_2026.pdf).
       </div>
     </div>
 
-    <div class='paper-entry'>
+    <div class='paper-entry selected'>
       <div>
         <img class="paperimg" src="../images/audible_world_models.png" alt="audible world models" />
       </div>
@@ -99,7 +119,7 @@ Here is my [CV](../files/duowenchen_2026.pdf).
       </div>
     </div>
 
-    <div class='paper-entry'>
+    <div class='paper-entry selected'>
       <div>
         <img class="paperimg" src="../images/cumulative_flow_map.png" alt="cumulative flow map" />
       </div>
@@ -124,7 +144,7 @@ Here is my [CV](../files/duowenchen_2026.pdf).
       </div>
     </div>
 
-    <div class='paper-entry'>
+    <div class='paper-entry selected'>
       <div>
         <img class="paperimg" src="../images/pfm_jcp.png" alt="composer" />
       </div>
@@ -148,7 +168,7 @@ Here is my [CV](../files/duowenchen_2026.pdf).
       </div>
     </div>
 
-    <div class='paper-entry'>
+    <div class='paper-entry selected'>
       <div>
         <img class="paperimg" src="../images/fluid_composer.png" alt="composer" />
       </div>
@@ -174,7 +194,7 @@ Here is my [CV](../files/duowenchen_2026.pdf).
       </div>
     </div>
     
-    <div class='paper-entry'>
+    <div class='paper-entry selected'>
       <div>
         <img class="paperimg" src="../images/compressible.png" alt="compressible" />
       </div>
@@ -223,7 +243,7 @@ Here is my [CV](../files/duowenchen_2026.pdf).
         <a nonsmooth="1" href="https://vpfm.sinanw.com/" class="">Project Page</a>
       </div>
     </div>
-    <div class='paper-entry'>
+    <div class='paper-entry selected'>
       <div>
         <img class="paperimg" src="../images/neural_pls.png" alt="neural_pls" />
       </div>
@@ -235,7 +255,7 @@ Here is my [CV](../files/duowenchen_2026.pdf).
         <a nonsmooth="1" href="../projects/neural-pls-project-page/index.html" class="">Project Page</a>
       </div>
     </div>
-    <div class='paper-entry'>
+    <div class='paper-entry selected'>
       <div>
         <img class="paperimg" src="../projects/pfm-sfi-project-page/static/images/representative.jpg" alt="sfi"/>
       </div>
@@ -309,6 +329,21 @@ Here is my [CV](../files/duowenchen_2026.pdf).
     </div>
   </div>
 </p>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.pub-filter button');
+    var list = document.querySelector('.pubContainer');
+    function apply(filter) {
+      list.classList.toggle('show-selected', filter === 'selected');
+      buttons.forEach(function (b) { b.classList.toggle('active', b.dataset.filter === filter); });
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { apply(b.dataset.filter); });
+    });
+    apply('selected');
+  })();
+</script>
 
 ## Projects & Artworks
 <p>
